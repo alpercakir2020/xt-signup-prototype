@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xtensio — Get Started</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="logo-wrap">
+    <img src="https://app.xtensio.com/img/xtensio-icon.jpg" alt="Xtensio" class="logo">
+  </div>
+
+  <div class="card">
+    <h1 class="heading">One quick question</h1>
+    <p class="subheading">What will you mainly use Xtensio for?</p>
+
+    <div class="survey-options">
+
+      <div class="survey-option" data-value="icp" onclick="selectOption(this)">
+        <div class="survey-radio"></div>
+        <div class="survey-option-label">
+          <div class="survey-option-title">Work or business</div>
+          <div class="survey-option-desc">Client deliverables, proposals, company projects</div>
+        </div>
+      </div>
+
+      <div class="survey-option" data-value="student" onclick="selectOption(this)">
+        <div class="survey-radio"></div>
+        <div class="survey-option-label">
+          <div class="survey-option-title">School or education</div>
+          <div class="survey-option-desc">Assignments, academic presentations, coursework</div>
+        </div>
+      </div>
+
+      <div class="survey-option" data-value="personal" onclick="selectOption(this)">
+        <div class="survey-radio"></div>
+        <div class="survey-option-label">
+          <div class="survey-option-title">Personal projects</div>
+          <div class="survey-option-desc">Exploring ideas, personal portfolio, side projects</div>
+        </div>
+      </div>
+
+    </div>
+
+    <button class="btn" id="continue-btn" disabled onclick="handleContinue()">
+      Continue
+    </button>
+
+    <p class="small-note" style="margin-top: 20px;">
+      Already have an account? <a href="#">Sign in</a>
+    </p>
+  </div>
+
+</div>
+
+<script>
+  let selected = null;
+
+  function selectOption(el) {
+    document.querySelectorAll('.survey-option').forEach(o => o.classList.remove('selected'));
+    el.classList.add('selected');
+    selected = el.dataset.value;
+    document.getElementById('continue-btn').disabled = false;
+  }
+
+  function handleContinue() {
+    if (!selected) return;
+    if (selected === 'icp') {
+      window.location.href = 'unlock.html';
+    } else {
+      /* Non-ICP: free dashboard — placeholder in prototype */
+      document.querySelector('.card').innerHTML = `
+        <h1 class="heading" style="margin-bottom: 16px;">You're all set</h1>
+        <p class="subheading">
+          You have access to 3 folios, 1 export, and 100 AI credits on the free plan.
+          Dive in whenever you're ready.
+        </p>
+        <a href="index.html" class="btn" style="margin-top: 8px;">Go to your dashboard →</a>
+        <p class="small-note">Prototype note: routes to existing free dashboard in production</p>
+      `;
+    }
+  }
+</script>
+</body>
+</html>

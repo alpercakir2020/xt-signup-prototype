@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xtensio — Invite Your Team</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .invite-rows { margin-bottom: 12px; }
+    .invite-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+      align-items: center;
+    }
+    .invite-row .form-input { margin: 0; flex: 1; height: 50px; }
+    .remove-btn {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      background: transparent;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      flex-shrink: 0;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .remove-btn:hover { border-color: var(--color-primary); color: var(--color-primary); }
+    .add-invite-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      color: var(--color-blue);
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: var(--font);
+      font-weight: 500;
+      padding: 0;
+      margin-bottom: 24px;
+    }
+    .add-invite-btn:hover { text-decoration: underline; }
+    .team-note {
+      background: var(--color-input-bg);
+      border-radius: var(--border-radius);
+      padding: 14px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 24px;
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .team-note .icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logo-wrap">
+    <img src="https://app.xtensio.com/img/xtensio-icon.jpg" alt="Xtensio" class="logo">
+  </div>
+
+  <div class="card">
+
+    <!-- Progress -->
+    <div class="progress-steps">
+      <div class="step-dot done"></div>
+      <div class="step-dot done"></div>
+      <div class="step-dot active"></div>
+    </div>
+    <p class="progress-label">Step 3 of 3 — Invite</p>
+
+    <h1 class="heading mb-8">Bring your team in</h1>
+    <p class="subheading">Everyone works in one shared workspace — one brand, one place. You can always do this later.</p>
+
+    <div class="form-group" style="margin-bottom: 12px;">
+      <label class="form-label">Teammate email addresses</label>
+      <div class="invite-rows" id="invite-rows">
+        <div class="invite-row">
+          <input class="form-input" type="email" placeholder="colleague@yourcompany.com">
+          <button class="remove-btn" onclick="removeRow(this)" title="Remove">×</button>
+        </div>
+      </div>
+      <button class="add-invite-btn" onclick="addRow()">+ Add another</button>
+    </div>
+
+    <div class="edu-line">
+      Your whole team works in one shared space. One brand, one place.
+    </div>
+
+    <div class="team-note">
+      <span class="icon">💡</span>
+      <span>Invites are sent immediately. They'll get access during your 14-day trial and need their own plan when it ends.</span>
+    </div>
+
+    <button class="btn" onclick="window.location.href='index.html'">
+      Send invites &amp; go to dashboard →
+    </button>
+
+    <a href="index.html" class="link-skip">Skip — go to dashboard</a>
+
+  </div>
+
+</div>
+
+<script>
+  function addRow() {
+    const rows = document.getElementById('invite-rows');
+    const div = document.createElement('div');
+    div.className = 'invite-row';
+    div.innerHTML = '<input class="form-input" type="email" placeholder="colleague@yourcompany.com"><button class="remove-btn" onclick="removeRow(this)" title="Remove">×</button>';
+    rows.appendChild(div);
+  }
+
+  function removeRow(btn) {
+    const rows = document.querySelectorAll('.invite-row');
+    if (rows.length === 1) return; /* keep at least one */
+    btn.closest('.invite-row').remove();
+  }
+</script>
+</body>
+</html>

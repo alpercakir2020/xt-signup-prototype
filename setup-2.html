@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xtensio — Brand Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .prefill-notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      background: rgba(0,189,156,0.07);
+      border: 1px solid rgba(0,189,156,0.25);
+      border-radius: var(--border-radius);
+      padding: 12px 14px;
+      margin-bottom: 20px;
+      font-size: 13px;
+      color: var(--color-navy);
+    }
+    .prefill-notice .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .prefill-notice strong { color: var(--color-success); }
+    .logo-preview-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-success);
+      border-radius: var(--border-radius);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      cursor: pointer;
+    }
+    .logo-placeholder {
+      width: 52px;
+      height: 52px;
+      background: var(--color-navy);
+      border-radius: var(--border-radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .logo-info { flex: 1; }
+    .logo-info .name { font-weight: 600; font-size: 14px; color: var(--color-navy); }
+    .logo-info .hint { font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
+    .logo-change { font-size: 12px; color: var(--color-blue); cursor: pointer; text-decoration: underline; flex-shrink: 0; }
+    .color-section-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      margin-bottom: 12px;
+    }
+    .color-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+    .color-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--color-input-bg);
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      padding: 10px 12px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .color-item:hover { border-color: var(--color-blue); }
+    .swatch { width: 36px; height: 36px; border-radius: 4px; flex-shrink: 0; }
+    .color-item-info .label { font-size: 12px; color: var(--color-text-muted); }
+    .color-item-info .hex { font-size: 13px; font-weight: 600; color: var(--color-navy); font-family: monospace; }
+    .empty-upload {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      background: var(--color-input-bg);
+      border: 2px dashed var(--color-border);
+      border-radius: var(--border-radius);
+      padding: 28px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      margin-bottom: 14px;
+    }
+    .empty-upload:hover { border-color: var(--color-blue); background: rgba(76,123,160,0.04); }
+    .empty-upload .upload-icon { font-size: 28px; color: var(--color-text-faint); }
+    .empty-upload .upload-text { font-size: 14px; color: var(--color-text-muted); font-weight: 500; }
+    .empty-upload .upload-sub { font-size: 12px; color: var(--color-text-faint); }
+    .tabs {
+      display: flex;
+      gap: 0;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 24px;
+    }
+    .tab {
+      padding: 10px 18px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.15s;
+      user-select: none;
+    }
+    .tab.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="logo-wrap">
+    <img src="https://app.xtensio.com/img/xtensio-icon.jpg" alt="Xtensio" class="logo">
+  </div>
+
+  <div class="card">
+
+    <!-- Progress -->
+    <div class="progress-steps">
+      <div class="step-dot done"></div>
+      <div class="step-dot active"></div>
+      <div class="step-dot upcoming"></div>
+    </div>
+    <p class="progress-label">Step 2 of 3 — Brand kit</p>
+
+    <h1 class="heading mb-8">Add your brand</h1>
+    <p class="subheading">Everything you create in Xtensio will automatically match your brand.</p>
+
+    <!-- Toggle between states -->
+    <div class="tabs">
+      <div class="tab active" onclick="showState('prefilled', this)">Auto-fetched (business domain)</div>
+      <div class="tab" onclick="showState('empty', this)">Empty (gmail / unknown)</div>
+    </div>
+
+    <!-- Prefilled state (business domain user) -->
+    <div id="state-prefilled">
+      <div class="prefill-notice">
+        <span class="icon">✨</span>
+        <span>We found your brand assets from <strong>acmestudio.com</strong>. Confirm or update below.</span>
+      </div>
+
+      <div class="section-label">Logo</div>
+      <div class="logo-preview-box">
+        <div class="logo-placeholder">A</div>
+        <div class="logo-info">
+          <div class="name">acme-logo.png</div>
+          <div class="hint">Fetched from acmestudio.com</div>
+        </div>
+        <span class="logo-change">Change</span>
+      </div>
+
+      <div class="section-label" style="margin-top: 16px;">Brand colors</div>
+      <div class="color-pairs">
+        <div class="color-item">
+          <div class="swatch" style="background: #1a2b6d;"></div>
+          <div class="color-item-info">
+            <div class="label">Primary</div>
+            <div class="hex">#1a2b6d</div>
+          </div>
+        </div>
+        <div class="color-item">
+          <div class="swatch" style="background: #e8a020;"></div>
+          <div class="color-item-info">
+            <div class="label">Accent</div>
+            <div class="hex">#e8a020</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 12px; color: var(--color-text-muted); margin-bottom: 20px;">Click any color to customize it</p>
+    </div>
+
+    <!-- Empty state (gmail user) -->
+    <div id="state-empty" style="display: none;">
+      <div class="section-label">Logo</div>
+      <div class="empty-upload">
+        <div class="upload-icon">↑</div>
+        <div class="upload-text">Upload your logo</div>
+        <div class="upload-sub">PNG, SVG, or JPG — at least 200×200px</div>
+      </div>
+
+      <div class="section-label" style="margin-top: 16px;">Brand colors</div>
+      <div class="color-pairs">
+        <div class="color-item">
+          <div class="swatch" style="background: #e3e5e6;"></div>
+          <div class="color-item-info">
+            <div class="label">Primary</div>
+            <div class="hex">Pick a color</div>
+          </div>
+        </div>
+        <div class="color-item">
+          <div class="swatch" style="background: #e3e5e6;"></div>
+          <div class="color-item-info">
+            <div class="label">Accent</div>
+            <div class="hex">Pick a color</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="edu-line">
+      Everything you create matches your brand automatically.
+    </div>
+
+    <a href="setup-3.html" class="btn">Next — Invite your team →</a>
+
+    <a href="setup-3.html" class="link-skip">Skip for now</a>
+
+  </div>
+
+</div>
+
+<script>
+  function showState(state, tabEl) {
+    document.getElementById('state-prefilled').style.display = state === 'prefilled' ? '' : 'none';
+    document.getElementById('state-empty').style.display = state === 'empty' ? '' : 'none';
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
+  }
+</script>
+</body>
+</html>

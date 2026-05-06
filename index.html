@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xtensio ICP Signup — Prototype Index</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    body { background: #f5f6f7; }
+    .index-wrap { max-width: 800px; margin: 0 auto; padding: 48px 20px; }
+    .index-header { margin-bottom: 40px; }
+    .proto-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(238,114,113,0.1); color: var(--color-primary); font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 16px; }
+    h1 { font-size: 28px; font-weight: 800; color: var(--color-navy); letter-spacing: -0.03em; margin-bottom: 8px; }
+    .index-desc { font-size: 15px; color: var(--color-text-muted); }
+    .flow-section { margin-bottom: 36px; }
+    .flow-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-faint); margin-bottom: 14px; }
+    .flow-pills { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+    .flow-pill { background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 8px 16px; font-size: 14px; font-weight: 600; color: var(--color-navy); text-decoration: none; transition: border-color 0.15s, box-shadow 0.15s; }
+    .flow-pill:hover { border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary); color: var(--color-primary); }
+    .flow-pill.icp { border-color: rgba(238,114,113,0.4); }
+    .flow-arrow { color: var(--color-text-faint); font-size: 16px; }
+    .screen-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    @media (min-width: 640px) { .screen-grid { grid-template-columns: repeat(3, 1fr); } }
+    .screen-card { background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 20px; text-decoration: none; transition: border-color 0.15s; display: block; }
+    .screen-card:hover { border-color: var(--color-primary); }
+    .screen-step { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--color-text-faint); margin-bottom: 8px; }
+    .screen-step.icp { color: var(--color-primary); }
+    .screen-name { font-size: 15px; font-weight: 700; color: var(--color-navy); margin-bottom: 4px; }
+    .screen-desc { font-size: 13px; color: var(--color-text-muted); line-height: 1.4; }
+    .note-box { background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 24px; margin-top: 40px; }
+    .note-title { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-faint); margin-bottom: 14px; }
+    .note-list { list-style: none; }
+    .note-list li { font-size: 13px; color: var(--color-text-muted); padding: 5px 0; display: flex; gap: 10px; }
+    .note-list .arrow { color: var(--color-teal); font-weight: 700; flex-shrink: 0; }
+    code { background: var(--color-input-bg); font-family: monospace; font-size: 12px; padding: 1px 5px; border-radius: 3px; color: var(--color-navy); }
+  </style>
+</head>
+<body>
+<div class="index-wrap">
+
+  <div class="index-header">
+    <div class="proto-badge">Prototype</div>
+    <h1>ICP Signup Prototype</h1>
+    <p class="index-desc">HTML prototype for the new ICP signup flow — wizard, pricing, and trial-end screens. Design reference for Vijay's implementation.</p>
+  </div>
+
+  <!-- ICP Flow -->
+  <div class="flow-section">
+    <p class="flow-title">ICP Flow — Work / Business path</p>
+    <div class="flow-pills">
+      <a href="survey.html" class="flow-pill icp">survey.html</a>
+      <span class="flow-arrow">→</span>
+      <a href="unlock.html" class="flow-pill icp">unlock.html</a>
+      <span class="flow-arrow">→</span>
+      <a href="setup-1.html" class="flow-pill icp">setup-1.html</a>
+      <span class="flow-arrow">→</span>
+      <a href="setup-2.html" class="flow-pill icp">setup-2.html</a>
+      <span class="flow-arrow">→</span>
+      <a href="setup-3.html" class="flow-pill icp">setup-3.html</a>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill" style="color:var(--color-text-muted);cursor:default;">dashboard (existing)</span>
+    </div>
+  </div>
+
+  <!-- Day 14 Flow -->
+  <div class="flow-section">
+    <p class="flow-title">Day 14 — Trial end</p>
+    <div class="flow-pills">
+      <a href="day14.html" class="flow-pill icp">day14.html</a>
+      <span class="flow-arrow">→</span>
+      <a href="pricing.html" class="flow-pill icp">pricing.html</a>
+      <span class="flow-arrow">or</span>
+      <a href="day14-free.html" class="flow-pill icp">day14-free.html</a>
+    </div>
+  </div>
+
+  <!-- Non-ICP -->
+  <div class="flow-section">
+    <p class="flow-title">Non-ICP path — Student / Personal / .edu</p>
+    <div class="flow-pills">
+      <a href="survey.html" class="flow-pill">survey.html</a>
+      <span class="flow-arrow">→</span>
+      <span class="flow-pill" style="color:var(--color-text-muted);cursor:default;">free dashboard (existing)</span>
+    </div>
+  </div>
+
+  <!-- All screens -->
+  <p class="flow-title">All screens</p>
+  <div class="screen-grid" style="margin-bottom: 0;">
+    <a href="survey.html" class="screen-card">
+      <div class="screen-step icp">Step 1</div>
+      <div class="screen-name">survey.html</div>
+      <div class="screen-desc">3 intent options, no bypass</div>
+    </a>
+    <a href="unlock.html" class="screen-card">
+      <div class="screen-step icp">ICP only</div>
+      <div class="screen-name">unlock.html</div>
+      <div class="screen-desc">2-week unlock announcement</div>
+    </a>
+    <a href="setup-1.html" class="screen-card">
+      <div class="screen-step icp">Wizard 1/3</div>
+      <div class="screen-name">setup-1.html</div>
+      <div class="screen-desc">Team name + workspace URL</div>
+    </a>
+    <a href="setup-2.html" class="screen-card">
+      <div class="screen-step icp">Wizard 2/3</div>
+      <div class="screen-name">setup-2.html</div>
+      <div class="screen-desc">Brand kit — auto-fetched logo + colors</div>
+    </a>
+    <a href="setup-3.html" class="screen-card">
+      <div class="screen-step icp">Wizard 3/3</div>
+      <div class="screen-name">setup-3.html</div>
+      <div class="screen-desc">Invite collaborator (optional)</div>
+    </a>
+    <a href="pricing.html" class="screen-card">
+      <div class="screen-step icp">Pricing</div>
+      <div class="screen-name">pricing.html</div>
+      <div class="screen-desc">4 plans, annual default, toggle</div>
+    </a>
+    <a href="day14.html" class="screen-card">
+      <div class="screen-step icp">Day 14</div>
+      <div class="screen-name">day14.html</div>
+      <div class="screen-desc">Hard block — choose your plan</div>
+    </a>
+    <a href="day14-free.html" class="screen-card">
+      <div class="screen-step icp">Day 14 alt</div>
+      <div class="screen-name">day14-free.html</div>
+      <div class="screen-desc">Free downgrade consequences</div>
+    </a>
+  </div>
+
+  <div class="note-box">
+    <p class="note-title">Implementation notes for Vijay</p>
+    <ul class="note-list">
+      <li><span class="arrow">→</span> Font: Inter (400/500/600/700/800) — switching from Proxima Nova</li>
+      <li><span class="arrow">→</span> Primary CTA: <code>#ee7271</code> — matches existing <code>.btn</code> color in app CSS</li>
+      <li><span class="arrow">→</span> Input bg: <code>#eff3f4</code>, border: <code>1px solid #e3e5e6</code>, height: <code>57px</code> — same as existing signup inputs</li>
+      <li><span class="arrow">→</span> Border radius: <code>6px</code> = <code>var(--border-radius)</code> — matches existing app</li>
+      <li><span class="arrow">→</span> Card shadow: <code>0 0 24px 0 rgba(0,25,38,.07)</code> — matches existing popup shadow</li>
+      <li><span class="arrow">→</span> All design tokens in <code>styles.css</code> — use CSS variables directly (they match app conventions)</li>
+    </ul>
+  </div>
+
+</div>
+</body>
+</html>

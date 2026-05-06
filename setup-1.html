@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xtensio — Setup Your Workspace</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="page">
+
+  <div class="logo-wrap">
+    <img src="https://app.xtensio.com/img/xtensio-icon.jpg" alt="Xtensio" class="logo">
+  </div>
+
+  <div class="card">
+
+    <!-- Progress -->
+    <div class="progress-steps">
+      <div class="step-dot active"></div>
+      <div class="step-dot upcoming"></div>
+      <div class="step-dot upcoming"></div>
+    </div>
+    <p class="progress-label">Step 1 of 3 — Workspace</p>
+
+    <h1 class="heading mb-8">Name your workspace</h1>
+    <p class="subheading">Your clients will access all your shared work from one permanent URL — no more sending updated file versions.</p>
+
+    <div class="form-group">
+      <label class="form-label" for="team-name">Team or company name</label>
+      <input
+        class="form-input"
+        type="text"
+        id="team-name"
+        placeholder="e.g. Acme Design Studio"
+        oninput="updateSlug(this.value)"
+      >
+    </div>
+
+    <div class="form-group mb-12">
+      <label class="form-label" for="workspace-slug">Workspace URL</label>
+      <div class="input-group">
+        <input
+          type="text"
+          id="workspace-slug"
+          placeholder="acme-design"
+          oninput="validateSlug(this)"
+        >
+        <div class="input-group-suffix">.xtensio.com</div>
+      </div>
+      <div id="slug-hint" style="font-size: 13px; color: var(--color-text-muted); margin-top: 6px;"></div>
+    </div>
+
+    <div class="edu-line">
+      Your clients always open the same link. No more attaching new versions.
+    </div>
+
+    <a href="setup-2.html" class="btn" id="next-btn">
+      Next — Brand kit →
+    </a>
+
+    <a href="setup-2.html" class="link-skip">Skip for now</a>
+
+  </div>
+
+</div>
+
+<script>
+  function updateSlug(val) {
+    const slug = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    document.getElementById('workspace-slug').value = slug;
+    validateSlug(document.getElementById('workspace-slug'));
+  }
+
+  function validateSlug(input) {
+    const hint = document.getElementById('slug-hint');
+    const val = input.value;
+    if (!val) { hint.textContent = ''; return; }
+    const clean = val.toLowerCase().replace(/[^a-z0-9-]/g, '');
+    if (clean !== val) {
+      input.value = clean;
+    }
+    hint.textContent = 'Your workspace: ' + clean + '.xtensio.com';
+    hint.style.color = 'var(--color-success)';
+    hint.style.fontWeight = '500';
+  }
+</script>
+</body>
+</html>
