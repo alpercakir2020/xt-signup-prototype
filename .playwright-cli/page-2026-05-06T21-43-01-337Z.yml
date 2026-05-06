@@ -1,0 +1,30 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - generic [ref=e7]: 
+  - heading "Check your inbox" [level=1] [ref=e8]
+  - generic [ref=e9]:
+    - generic [ref=e10]: A
+    - generic [ref=e11]:
+      - generic [ref=e12]: Acme Design Studio
+      - generic [ref=e13]:
+        - generic [ref=e14]: 
+        - text: acme-design.xtensio.com
+    - generic [ref=e15]:
+      - generic [ref=e16]: 
+      - text: Ready
+  - paragraph [ref=e17]:
+    - text: We sent a 6-digit code to
+    - generic [ref=e18]: alex@acmestudio.com
+  - generic [ref=e19]:
+    - textbox [active] [ref=e20]
+    - textbox [ref=e21]
+    - textbox [ref=e22]
+    - textbox [ref=e23]
+    - textbox [ref=e24]
+    - textbox [ref=e25]
+  - button "Verify & continue" [disabled]
+  - generic [ref=e26]:
+    - text: Didn't get it?
+    - link "Resend code" [ref=e27] [cursor=pointer]:
+      - /url: "#"
+  - paragraph [ref=e28]: Check your spam folder if you don't see it within 30 seconds.

@@ -1,0 +1,27 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - generic [ref=e10]:
+    - generic [ref=e11]: A
+    - generic [ref=e12]:
+      - generic [ref=e13]: Acme Design Studio
+      - generic [ref=e14]:
+        - generic [ref=e15]: 
+        - text: acme-design.xtensio.com
+    - generic [ref=e16]:
+      - generic [ref=e17]: 
+      - text: Live
+  - heading "Bring your team in" [level=1] [ref=e18]
+  - paragraph [ref=e19]: Everyone works in one shared workspace — one brand, one place. You can always do this later.
+  - generic [ref=e20]:
+    - generic [ref=e21]: Teammate email addresses
+    - paragraph [ref=e22]: They'll get a link to join your workspace right away.
+    - generic [ref=e24]:
+      - textbox "colleague@yourcompany.com" [ref=e25]
+      - button "×" [ref=e26] [cursor=pointer]
+  - button "+ Add another" [ref=e27] [cursor=pointer]
+  - generic [ref=e28]:
+    - generic [ref=e29]: 💡
+    - generic [ref=e30]: If you downgrade to free at the end of the trial, teammates will lose access to this workspace. They'll keep their own Xtensio accounts.
+  - button "Send invites & continue →" [ref=e31] [cursor=pointer]
+  - link "Skip — confirm your email" [ref=e32] [cursor=pointer]:
+    - /url: confirm.html?for=icp
