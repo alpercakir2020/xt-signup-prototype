@@ -936,67 +936,32 @@ body.monthly .price-monthly { display: block !important; }
 .link { color: var(--color-blue); text-decoration: none; font-weight: 500; }
 .link:hover { text-decoration: underline; }
 
-/* Workspace identity badge (setup-3, confirm) */
-.ws-badge {
-  display: flex;
+/* Brand swap — replaces Xtensio logo once workspace is set up */
+.brand-swap {
+  display: inline-flex;
   align-items: center;
-  gap: 12px;
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 10px 14px;
-  margin-bottom: 20px;
-  box-shadow: 0 1px 4px rgba(5,43,62,0.06);
+  gap: 10px;
 }
 
-.ws-badge-logo {
-  width: 36px;
-  height: 36px;
-  min-width: 36px;
+.bs-initial {
+  width: 38px;
+  height: 38px;
   background: #1a2b6d;
-  border-radius: 8px;
+  border-radius: 9px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 17px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
-  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.bs-name {
   font-size: 16px;
-}
-
-.ws-badge-info {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.ws-badge-name {
-  font-size: 13px;
   font-weight: 700;
   color: var(--color-navy);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ws-badge-url {
-  font-size: 11px;
-  color: var(--color-text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-}
-
-.ws-badge-status {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--color-success);
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  white-space: nowrap;
-  flex-shrink: 0;
+  letter-spacing: -0.02em;
 }
 
 /* Icon circle above confirm heading */
