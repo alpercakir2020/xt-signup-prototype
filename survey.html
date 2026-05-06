@@ -67,8 +67,11 @@
 
   function handleContinue() {
     if (!selected) return;
-    const intent = selected === 'icp' ? 'icp' : 'free';
-    window.location.href = 'confirm.html?for=' + intent;
+    if (selected === 'icp') {
+      window.location.href = 'unlock.html';
+    } else {
+      window.location.href = 'confirm.html?for=free';
+    }
   }
 </script>
 </body>

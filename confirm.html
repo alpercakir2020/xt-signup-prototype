@@ -87,8 +87,8 @@
 <script>
   const digits = document.querySelectorAll('.otp-digit');
   const btn = document.getElementById('verify-btn');
-  const params = new URLSearchParams(location.search);
-  const dest = params.get('for') === 'icp' ? 'unlock.html' : 'index.html';
+  /* Both ICP (end of wizard) and non-ICP (after survey) land on dashboard */
+  const dest = 'index.html';
 
   digits.forEach((input, i) => {
     input.addEventListener('input', e => {

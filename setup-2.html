@@ -12,19 +12,19 @@
     .logo-found {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 12px;
       background: #fff;
       border: 1px solid var(--color-success);
       border-radius: var(--border-radius);
-      padding: 14px 16px;
-      margin-bottom: 20px;
+      padding: 10px 14px;
+      margin-bottom: 14px;
       cursor: pointer;
       transition: border-color 0.15s;
     }
     .logo-found:hover { border-color: #00a888; }
     .logo-icon {
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
       background: #1a2b6d;
       border-radius: 6px;
       display: flex;
@@ -52,8 +52,8 @@
     .color-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
+      gap: 8px;
+      margin-bottom: 8px;
     }
     .color-chip {
       display: flex;
@@ -67,7 +67,7 @@
       background: #fff;
     }
     .color-chip:hover { border-color: var(--color-blue); }
-    .color-chip-swatch { width: 44px; height: 44px; flex-shrink: 0; }
+    .color-chip-swatch { width: 40px; height: 40px; flex-shrink: 0; }
     .color-chip-info { padding: 0 12px; }
     .color-chip-label { font-size: 11px; color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
     .color-chip-hex { font-size: 13px; font-weight: 600; font-family: monospace; color: var(--color-navy); }
@@ -75,6 +75,11 @@
       background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 4px, #e5e7eb 4px, #e5e7eb 8px);
     }
     .color-empty .color-chip-hex { color: var(--color-text-faint); font-family: var(--font); font-weight: 500; font-size: 13px; }
+
+    /* Page-specific spacing overrides to keep above the fold */
+    .page { padding-top: 32px; padding-bottom: 40px; }
+    .logo-wrap { margin-bottom: 20px; }
+    .progress-wrap { margin-bottom: 16px; }
   </style>
 </head>
 <body>
@@ -91,10 +96,10 @@
       <div class="step-dot upcoming"></div>
     </div>
 
-    <h1 class="heading" style="margin-bottom: 16px;">Add your brand</h1>
-    <p class="subheading">Your logo replaces the Xtensio logo on your workspace, login screen, and every deliverable you share — your clients see your brand, not ours.</p>
+    <h1 class="heading" style="margin-bottom: 10px;">Add your brand</h1>
+    <p class="subheading" style="margin-bottom: 0; font-size: 14px;">Your logo replaces the Xtensio logo everywhere — clients see your brand, not ours.</p>
 
-    <div class="tabs" style="margin-top: 32px; margin-bottom: 28px;">
+    <div class="tabs" style="margin-top: 20px; margin-bottom: 20px;">
       <div class="tab active" onclick="showState('prefilled', this)">Auto-fetched (business domain)</div>
       <div class="tab" onclick="showState('empty', this)">Empty (gmail / unknown)</div>
     </div>
@@ -102,7 +107,7 @@
     <!-- State: business domain -->
     <div id="state-prefilled">
 
-      <div class="fetch-notice" style="margin-bottom: 24px;">
+      <div class="fetch-notice" style="margin-bottom: 16px;">
         <span style="font-size: 18px;">✨</span>
         <span>We found your brand from <strong>acmestudio.com</strong>. Confirm or update below.</span>
       </div>
@@ -117,7 +122,7 @@
         <span class="logo-found-change">Change</span>
       </div>
 
-      <div class="section-label mb-6" style="margin-top: 4px;">Brand colors</div>
+      <div class="section-label mb-6" style="margin-top: 8px;">Brand colors</div>
       <div class="color-grid">
         <div class="color-chip">
           <div class="color-chip-swatch" style="background: #1a2b6d;"></div>
@@ -148,7 +153,7 @@
           </div>
         </div>
       </div>
-      <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 32px;">Click any color to customize it</p>
+      <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 20px;">Click any color to customize it</p>
 
     </div>
 
