@@ -1,0 +1,19 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "One quick question" [level=1] [ref=e6]
+  - paragraph [ref=e7]: What will you mainly use Xtensio for?
+  - generic [ref=e8]:
+    - generic [ref=e11] [cursor=pointer]:
+      - generic [ref=e12]: Work or business
+      - generic [ref=e13]: Client deliverables, proposals, company projects
+    - generic [ref=e16] [cursor=pointer]:
+      - generic [ref=e17]: School or education
+      - generic [ref=e18]: Assignments, academic presentations, coursework
+    - generic [ref=e21] [cursor=pointer]:
+      - generic [ref=e22]: Personal projects
+      - generic [ref=e23]: Exploring ideas, personal portfolio, side projects
+  - button "Continue" [disabled]
+  - paragraph [ref=e24]:
+    - text: Already have an account?
+    - link "Sign in" [ref=e25] [cursor=pointer]:
+      - /url: "#"

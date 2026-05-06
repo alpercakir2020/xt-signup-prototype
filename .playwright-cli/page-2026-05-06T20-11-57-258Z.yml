@@ -1,0 +1,123 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: Prototype
+    - heading "ICP Signup Prototype" [level=1] [ref=e5]
+    - paragraph [ref=e6]: HTML prototype for the new ICP signup flow — wizard, pricing, and trial-end screens. Design reference for Vijay's implementation.
+  - generic [ref=e7]:
+    - paragraph [ref=e8]: ICP Flow — Work / Business path
+    - generic [ref=e9]:
+      - link "survey.html" [ref=e10] [cursor=pointer]:
+        - /url: survey.html
+      - generic [ref=e11]: →
+      - link "unlock.html" [ref=e12] [cursor=pointer]:
+        - /url: unlock.html
+      - generic [ref=e13]: →
+      - link "setup-1.html" [ref=e14] [cursor=pointer]:
+        - /url: setup-1.html
+      - generic [ref=e15]: →
+      - link "setup-2.html" [ref=e16] [cursor=pointer]:
+        - /url: setup-2.html
+      - generic [ref=e17]: →
+      - link "setup-3.html" [ref=e18] [cursor=pointer]:
+        - /url: setup-3.html
+      - generic [ref=e19]: →
+      - generic [ref=e20]: dashboard (existing)
+  - generic [ref=e21]:
+    - paragraph [ref=e22]: Day 14 — Trial end
+    - generic [ref=e23]:
+      - link "day14.html" [ref=e24] [cursor=pointer]:
+        - /url: day14.html
+      - generic [ref=e25]: →
+      - link "pricing.html" [ref=e26] [cursor=pointer]:
+        - /url: pricing.html
+      - generic [ref=e27]: or
+      - link "day14-free.html" [ref=e28] [cursor=pointer]:
+        - /url: day14-free.html
+  - generic [ref=e29]:
+    - paragraph [ref=e30]: Non-ICP path — Student / Personal / .edu
+    - generic [ref=e31]:
+      - link "survey.html" [ref=e32] [cursor=pointer]:
+        - /url: survey.html
+      - generic [ref=e33]: →
+      - generic [ref=e34]: free dashboard (existing)
+  - paragraph [ref=e35]: All screens
+  - generic [ref=e36]:
+    - link "Step 1 survey.html 3 intent options, no bypass" [ref=e37] [cursor=pointer]:
+      - /url: survey.html
+      - generic [ref=e38]: Step 1
+      - generic [ref=e39]: survey.html
+      - generic [ref=e40]: 3 intent options, no bypass
+    - link "ICP only unlock.html 2-week unlock announcement" [ref=e41] [cursor=pointer]:
+      - /url: unlock.html
+      - generic [ref=e42]: ICP only
+      - generic [ref=e43]: unlock.html
+      - generic [ref=e44]: 2-week unlock announcement
+    - link "Wizard 1/3 setup-1.html Team name + workspace URL" [ref=e45] [cursor=pointer]:
+      - /url: setup-1.html
+      - generic [ref=e46]: Wizard 1/3
+      - generic [ref=e47]: setup-1.html
+      - generic [ref=e48]: Team name + workspace URL
+    - link "Wizard 2/3 setup-2.html Brand kit — auto-fetched logo + colors" [ref=e49] [cursor=pointer]:
+      - /url: setup-2.html
+      - generic [ref=e50]: Wizard 2/3
+      - generic [ref=e51]: setup-2.html
+      - generic [ref=e52]: Brand kit — auto-fetched logo + colors
+    - link "Wizard 3/3 setup-3.html Invite collaborator (optional)" [ref=e53] [cursor=pointer]:
+      - /url: setup-3.html
+      - generic [ref=e54]: Wizard 3/3
+      - generic [ref=e55]: setup-3.html
+      - generic [ref=e56]: Invite collaborator (optional)
+    - link "Pricing pricing.html 4 plans, annual default, toggle" [ref=e57] [cursor=pointer]:
+      - /url: pricing.html
+      - generic [ref=e58]: Pricing
+      - generic [ref=e59]: pricing.html
+      - generic [ref=e60]: 4 plans, annual default, toggle
+    - link "Day 14 day14.html Hard block — choose your plan" [ref=e61] [cursor=pointer]:
+      - /url: day14.html
+      - generic [ref=e62]: Day 14
+      - generic [ref=e63]: day14.html
+      - generic [ref=e64]: Hard block — choose your plan
+    - link "Day 14 alt day14-free.html Free downgrade consequences" [ref=e65] [cursor=pointer]:
+      - /url: day14-free.html
+      - generic [ref=e66]: Day 14 alt
+      - generic [ref=e67]: day14-free.html
+      - generic [ref=e68]: Free downgrade consequences
+  - generic [ref=e69]:
+    - paragraph [ref=e70]: Implementation notes for Vijay
+    - list [ref=e71]:
+      - listitem [ref=e72]:
+        - generic [ref=e73]: →
+        - text: "Font: Inter (400/500/600/700/800) — switching from Proxima Nova"
+      - listitem [ref=e74]:
+        - generic [ref=e75]: →
+        - text: "Primary CTA:"
+        - code [ref=e76]: "#ee7271"
+        - text: — matches existing
+        - code [ref=e77]: .btn
+        - text: color in app CSS
+      - listitem [ref=e78]:
+        - generic [ref=e79]: →
+        - text: "Input bg:"
+        - code [ref=e80]: "#eff3f4"
+        - text: ", border:"
+        - code [ref=e81]: "1px solid #e3e5e6"
+        - text: ", height:"
+        - code [ref=e82]: 57px
+        - text: — same as existing signup inputs
+      - listitem [ref=e83]:
+        - generic [ref=e84]: →
+        - text: "Border radius:"
+        - code [ref=e85]: 6px
+        - text: =
+        - code [ref=e86]: var(--border-radius)
+        - text: — matches existing app
+      - listitem [ref=e87]:
+        - generic [ref=e88]: →
+        - text: "Card shadow:"
+        - code [ref=e89]: 0 0 24px 0 rgba(0,25,38,.07)
+        - text: — matches existing popup shadow
+      - listitem [ref=e90]:
+        - generic [ref=e91]: →
+        - text: All design tokens in
+        - code [ref=e92]: styles.css
+        - text: — use CSS variables directly (they match app conventions)

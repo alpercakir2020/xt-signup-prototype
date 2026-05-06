@@ -23,12 +23,12 @@
       <div class="step-dot upcoming"></div>
     </div>
 
-    <h1 class="heading">Name your workspace</h1>
-    <p class="subheading">Your clients access all your shared work from one permanent URL — no more sending updated file versions.</p>
+    <h1 class="heading" style="margin-bottom: 16px;">Set up your workspace</h1>
+    <p class="subheading">This is where your team works and where clients access everything you share with them — all under your brand, at your own URL.</p>
 
-    <div class="form-group">
+    <div class="form-group" style="margin-top: 32px;">
       <label class="form-label" for="team-name">Team or company name</label>
-      <p class="form-helper">This appears on your workspace and all shared deliverables.</p>
+      <p class="form-helper">Appears on your workspace and all shared deliverables.</p>
       <input
         class="form-input"
         type="text"
@@ -38,9 +38,9 @@
       >
     </div>
 
-    <div class="form-group mb-28">
+    <div class="form-group" style="margin-bottom: 36px;">
       <label class="form-label" for="workspace-slug">Workspace URL</label>
-      <p class="form-helper">Your clients will always open the same link — no more attaching new versions.</p>
+      <p class="form-helper">Everything you share lives here — clients open <em>yourteam</em>.xtensio.com/pitch-deck and always see the latest version.</p>
       <div class="slug-row">
         <input
           class="slug-input"
@@ -54,7 +54,7 @@
       <p id="slug-hint" style="font-size: 13px; margin-top: 8px; min-height: 18px;"></p>
     </div>
 
-    <a href="setup-2.html" class="btn" id="next-btn">Next — Brand kit →</a>
+    <a href="setup-2.html" class="btn">Next — Brand kit →</a>
 
     <a href="setup-2.html" class="skip-link">Skip for now</a>
 
@@ -74,9 +74,7 @@
     if (!val) { hint.textContent = ''; return; }
     const clean = val.toLowerCase().replace(/[^a-z0-9-]/g, '');
     if (clean !== val) input.value = clean;
-    hint.textContent = clean + '.xtensio.com';
-    hint.style.color = 'var(--color-success)';
-    hint.style.fontWeight = '500';
+    hint.innerHTML = '<span style="color:var(--color-success);font-weight:500;">' + clean + '.xtensio.com</span> — looks good';
   }
 </script>
 </body>

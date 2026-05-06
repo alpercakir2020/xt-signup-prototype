@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xtensio — Confirm Your Email</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .email-highlight {
+      display: inline-block;
+      font-weight: 700;
+      color: var(--color-navy);
+    }
+    .otp-wrap {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin: 32px 0;
+    }
+    .otp-digit {
+      width: 54px;
+      height: 64px;
+      border: 1.5px solid var(--color-border);
+      border-radius: var(--border-radius);
+      font-size: 26px;
+      font-weight: 700;
+      font-family: var(--font);
+      color: var(--color-navy);
+      text-align: center;
+      background: #fff;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .otp-digit:focus {
+      outline: none;
+      border-color: var(--color-border-focus);
+      box-shadow: 0 0 0 3px rgba(76,123,160,0.12);
+    }
+    .otp-digit.filled { border-color: var(--color-success); background: #f0fdf9; }
+    .resend-wrap {
+      text-align: center;
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      margin-top: 20px;
+    }
+    .resend-wrap a { color: var(--color-blue); text-decoration: none; cursor: pointer; }
+    .resend-wrap a:hover { text-decoration: underline; }
+    .spam-note { text-align: center; font-size: 12px; color: var(--color-text-faint); margin-top: 8px; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-inner">
+
+    <div class="logo-wrap">
+      <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
+    </div>
+
+    <h1 class="heading" style="margin-bottom: 16px;">Check your inbox</h1>
+
+    <p class="subheading" style="margin-bottom: 0;">
+      We sent a 6-digit code to<br>
+      <span class="email-highlight">alex@acmestudio.com</span>
+    </p>
+
+    <div class="otp-wrap">
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric" autocomplete="one-time-code">
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric">
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric">
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric">
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric">
+      <input class="otp-digit" type="text" maxlength="1" inputmode="numeric">
+    </div>
+
+    <button class="btn" id="verify-btn" disabled>Verify &amp; continue</button>
+
+    <div class="resend-wrap">
+      Didn't get it? <a href="#" onclick="resend(event)">Resend code</a>
+    </div>
+    <p class="spam-note">Check your spam folder if you don't see it within 30 seconds.</p>
+
+  </div>
+</div>
+
+<script>
+  const digits = document.querySelectorAll('.otp-digit');
+  const btn = document.getElementById('verify-btn');
+  const params = new URLSearchParams(location.search);
+  const dest = params.get('for') === 'icp' ? 'unlock.html' : 'index.html';
+
+  digits.forEach((input, i) => {
+    input.addEventListener('input', e => {
+      const val = e.target.value.replace(/\D/g, '');
+      e.target.value = val;
+      e.target.classList.toggle('filled', !!val);
+      if (val && i < digits.length - 1) digits[i + 1].focus();
+      check();
+    });
+
+    input.addEventListener('keydown', e => {
+      if (e.key === 'Backspace' && !input.value && i > 0) {
+        digits[i - 1].focus();
+        digits[i - 1].value = '';
+        digits[i - 1].classList.remove('filled');
+        check();
+      }
+    });
+
+    input.addEventListener('paste', e => {
+      e.preventDefault();
+      const pasted = (e.clipboardData || window.clipboardData).getData('text').replace(/\D/g, '').slice(0, 6);
+      pasted.split('').forEach((ch, j) => {
+        if (digits[j]) { digits[j].value = ch; digits[j].classList.add('filled'); }
+      });
+      if (pasted.length >= 1) { digits[Math.min(pasted.length, 5)].focus(); }
+      check();
+    });
+  });
+
+  function check() {
+    btn.disabled = ![...digits].every(d => d.value.length === 1);
+  }
+
+  btn.addEventListener('click', () => { window.location.href = dest; });
+
+  function resend(e) {
+    e.preventDefault();
+    const a = e.target;
+    a.textContent = 'Sent ✓';
+    a.style.color = 'var(--color-success)';
+    setTimeout(() => { a.textContent = 'Resend code'; a.style.color = ''; }, 3000);
+  }
+
+  digits[0].focus();
+</script>
+</body>
+</html>

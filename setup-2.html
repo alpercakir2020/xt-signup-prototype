@@ -17,7 +17,7 @@
       border: 1px solid var(--color-success);
       border-radius: var(--border-radius);
       padding: 14px 16px;
-      margin-bottom: 14px;
+      margin-bottom: 20px;
       cursor: pointer;
       transition: border-color 0.15s;
     }
@@ -39,13 +39,26 @@
     .logo-found-name { font-weight: 600; font-size: 14px; color: var(--color-navy); margin-bottom: 2px; }
     .logo-found-hint { font-size: 12px; color: var(--color-text-secondary); }
     .logo-found-change { font-size: 12px; color: var(--color-blue); cursor: pointer; text-decoration: underline; flex-shrink: 0; }
-    .color-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+
+    .brand-where {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .brand-where strong { color: var(--color-navy); font-weight: 600; }
+
+    /* 4-color grid */
+    .color-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
     .color-chip {
       display: flex;
       align-items: center;
-      gap: 10px;
-      flex: 1;
-      min-width: 140px;
+      gap: 0;
       border: 1px solid var(--color-border);
       border-radius: var(--border-radius);
       overflow: hidden;
@@ -54,12 +67,14 @@
       background: #fff;
     }
     .color-chip:hover { border-color: var(--color-blue); }
-    .color-chip-swatch { width: 48px; height: 48px; flex-shrink: 0; }
-    .color-chip-info { padding: 0 12px 0 0; }
-    .color-chip-label { font-size: 12px; color: var(--color-text-secondary); }
+    .color-chip-swatch { width: 44px; height: 44px; flex-shrink: 0; }
+    .color-chip-info { padding: 0 12px; }
+    .color-chip-label { font-size: 11px; color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
     .color-chip-hex { font-size: 13px; font-weight: 600; font-family: monospace; color: var(--color-navy); }
-    .color-empty .color-chip-swatch { background: #f3f4f6; border-right: 1px solid var(--color-border); }
-    .color-empty .color-chip-hex { color: var(--color-text-faint); }
+    .color-empty .color-chip-swatch {
+      background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 4px, #e5e7eb 4px, #e5e7eb 8px);
+    }
+    .color-empty .color-chip-hex { color: var(--color-text-faint); font-family: var(--font); font-weight: 500; font-size: 13px; }
   </style>
 </head>
 <body>
@@ -76,18 +91,18 @@
       <div class="step-dot upcoming"></div>
     </div>
 
-    <h1 class="heading">Add your brand</h1>
-    <p class="subheading">Everything you create in Xtensio automatically matches your brand.</p>
+    <h1 class="heading" style="margin-bottom: 16px;">Add your brand</h1>
+    <p class="subheading">Your logo replaces the Xtensio logo on your workspace, login screen, and every deliverable you share — your clients see your brand, not ours.</p>
 
-    <div class="tabs mb-28">
+    <div class="tabs" style="margin-top: 32px; margin-bottom: 28px;">
       <div class="tab active" onclick="showState('prefilled', this)">Auto-fetched (business domain)</div>
       <div class="tab" onclick="showState('empty', this)">Empty (gmail / unknown)</div>
     </div>
 
-    <!-- State: business domain — brand auto-fetched -->
+    <!-- State: business domain -->
     <div id="state-prefilled">
 
-      <div class="fetch-notice mb-20">
+      <div class="fetch-notice" style="margin-bottom: 24px;">
         <span style="font-size: 18px;">✨</span>
         <span>We found your brand from <strong>acmestudio.com</strong>. Confirm or update below.</span>
       </div>
@@ -102,8 +117,8 @@
         <span class="logo-found-change">Change</span>
       </div>
 
-      <div class="section-label mb-6" style="margin-top: 20px;">Brand colors</div>
-      <div class="color-row">
+      <div class="section-label mb-6" style="margin-top: 4px;">Brand colors</div>
+      <div class="color-grid">
         <div class="color-chip">
           <div class="color-chip-swatch" style="background: #1a2b6d;"></div>
           <div class="color-chip-info">
@@ -114,39 +129,67 @@
         <div class="color-chip">
           <div class="color-chip-swatch" style="background: #e8a020;"></div>
           <div class="color-chip-info">
-            <div class="color-chip-label">Accent</div>
+            <div class="color-chip-label">Secondary</div>
             <div class="color-chip-hex">#e8a020</div>
           </div>
         </div>
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #0f172a;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Dark</div>
+            <div class="color-chip-hex">#0f172a</div>
+          </div>
+        </div>
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #f8fafc;border-right: 1px solid #e9ecf0;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Light</div>
+            <div class="color-chip-hex">#f8fafc</div>
+          </div>
+        </div>
       </div>
-      <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 28px;">Click any color to customize it</p>
+      <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 32px;">Click any color to customize it</p>
 
     </div>
 
-    <!-- State: gmail / unknown — empty brand -->
+    <!-- State: gmail / unknown -->
     <div id="state-empty" style="display: none;">
 
       <div class="section-label mb-6">Logo</div>
-      <div class="upload-zone mb-20">
+      <div class="upload-zone" style="margin-bottom: 24px;">
         <div class="upload-icon">↑</div>
         <div class="upload-text">Upload your logo</div>
         <div class="upload-sub">PNG, SVG or JPG — at least 200×200px</div>
       </div>
 
-      <div class="section-label mb-6" style="margin-top: 4px;">Brand colors</div>
-      <div class="color-row" style="margin-bottom: 28px;">
+      <div class="section-label mb-6">Brand colors</div>
+      <div class="color-grid" style="margin-bottom: 32px;">
         <div class="color-chip color-empty">
           <div class="color-chip-swatch"></div>
           <div class="color-chip-info">
             <div class="color-chip-label">Primary</div>
-            <div class="color-chip-hex">Pick a color</div>
+            <div class="color-chip-hex">Pick color</div>
           </div>
         </div>
         <div class="color-chip color-empty">
           <div class="color-chip-swatch"></div>
           <div class="color-chip-info">
-            <div class="color-chip-label">Accent</div>
-            <div class="color-chip-hex">Pick a color</div>
+            <div class="color-chip-label">Secondary</div>
+            <div class="color-chip-hex">Pick color</div>
+          </div>
+        </div>
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Dark</div>
+            <div class="color-chip-hex">Pick color</div>
+          </div>
+        </div>
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Light</div>
+            <div class="color-chip-hex">Pick color</div>
           </div>
         </div>
       </div>

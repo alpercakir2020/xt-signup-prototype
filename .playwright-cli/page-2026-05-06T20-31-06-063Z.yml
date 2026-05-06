@@ -1,0 +1,40 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - generic [ref=e7]: 14-day full access — starts now
+  - heading "You've unlocked everything Xtensio has to offer." [level=1] [ref=e9]:
+    - text: You've unlocked everything
+    - text: Xtensio has to offer.
+  - paragraph [ref=e10]: For the next 2 weeks, you have unrestricted access to every feature. Let's set up your workspace so you can hit the ground running.
+  - generic [ref=e11]:
+    - generic [ref=e12]:
+      - generic [ref=e13]: ✓
+      - generic [ref=e14]:
+        - strong [ref=e15]: Unlimited exports
+        - text: PDF, PNG, PPT — no watermarks
+    - generic [ref=e16]:
+      - generic [ref=e17]: ✓
+      - generic [ref=e18]:
+        - strong [ref=e19]: Custom branding
+        - text: Your logo, colors & fonts
+    - generic [ref=e20]:
+      - generic [ref=e21]: ✓
+      - generic [ref=e22]:
+        - strong [ref=e23]: Unlimited workspaces
+        - text: Organize by client or project
+    - generic [ref=e24]:
+      - generic [ref=e25]: ✓
+      - generic [ref=e26]:
+        - strong [ref=e27]: Live shareable links
+        - text: Publish to your own domain
+    - generic [ref=e28]:
+      - generic [ref=e29]: ✓
+      - generic [ref=e30]:
+        - strong [ref=e31]: Engagement analytics
+        - text: See who opened your link
+    - generic [ref=e32]:
+      - generic [ref=e33]: ✓
+      - generic [ref=e34]:
+        - strong [ref=e35]: Collaboration
+        - text: Invite your whole team
+  - link "Set up your workspace →" [ref=e36] [cursor=pointer]:
+    - /url: setup-1.html

@@ -1,0 +1,48 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "Your 2-week trial has ended." [level=1] [ref=e6]
+  - paragraph [ref=e7]: You've seen what Xtensio can do. Choose the plan that fits how you work.
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e10]: "7"
+      - generic [ref=e11]: Folios created
+    - generic [ref=e12]:
+      - generic [ref=e13]: "23"
+      - generic [ref=e14]: Link opens
+    - generic [ref=e15]:
+      - generic [ref=e16]: "3"
+      - generic [ref=e17]: Exports
+  - generic [ref=e18]:
+    - generic [ref=e19]: 🎁
+    - generic [ref=e20]:
+      - strong [ref=e21]: Limited offer — 20% off
+      - text: your first 3 months when you subscribe today. Discount applied at checkout automatically.
+  - paragraph [ref=e22]: Annual billing — 3 months free
+  - generic [ref=e23]:
+    - generic [ref=e24] [cursor=pointer]:
+      - generic [ref=e25]: Solo
+      - generic [ref=e26]: $18
+      - generic [ref=e27]: /mo
+    - generic [ref=e28] [cursor=pointer]:
+      - generic [ref=e29]: Team
+      - generic [ref=e30]: $37
+      - generic [ref=e31]: /mo
+    - generic [ref=e32] [cursor=pointer]:
+      - generic [ref=e33]: Agency
+      - generic [ref=e34]: $52
+      - generic [ref=e35]: /mo
+      - generic [ref=e36]: Popular
+    - generic [ref=e37] [cursor=pointer]:
+      - generic [ref=e38]: Business
+      - generic [ref=e39]: $74
+      - generic [ref=e40]: /mo
+  - link "See full plan details →" [ref=e41] [cursor=pointer]:
+    - /url: pricing.html
+  - button "Subscribe to Agency — $52/mo" [ref=e42] [cursor=pointer]
+  - paragraph [ref=e43]:
+    - text: or
+    - link "continue with the free plan" [ref=e44] [cursor=pointer]:
+      - /url: day14-free.html
+  - generic [ref=e45]:
+    - strong [ref=e46]: You have 7 more days
+    - text: to decide. Your workspace is read-only until you choose — you won't lose any of your work.

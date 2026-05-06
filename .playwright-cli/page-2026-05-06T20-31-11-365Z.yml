@@ -1,0 +1,21 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "Name your workspace" [level=1] [ref=e10]
+  - paragraph [ref=e11]: Your clients access all your shared work from one permanent URL — no more sending updated file versions.
+  - generic [ref=e12]:
+    - generic [ref=e13]: Team or company name
+    - paragraph [ref=e14]: This appears on your workspace and all shared deliverables.
+    - textbox "Team or company name" [ref=e15]:
+      - /placeholder: e.g. Acme Design Studio
+  - generic [ref=e16]:
+    - generic [ref=e17]: Workspace URL
+    - paragraph [ref=e18]: Your clients will always open the same link — no more attaching new versions.
+    - generic [ref=e19]:
+      - textbox "Workspace URL" [ref=e20]:
+        - /placeholder: acme-design
+      - generic [ref=e21]: .xtensio.com
+    - paragraph [ref=e22]
+  - link "Next — Brand kit →" [ref=e23] [cursor=pointer]:
+    - /url: setup-2.html
+  - link "Skip for now" [ref=e24] [cursor=pointer]:
+    - /url: setup-2.html

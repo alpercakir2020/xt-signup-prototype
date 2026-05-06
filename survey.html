@@ -52,10 +52,6 @@
       Continue
     </button>
 
-    <p class="small-note" style="margin-top: 20px;">
-      Already have an account? <a href="#" class="link">Sign in</a>
-    </p>
-
   </div>
 </div>
 
@@ -71,24 +67,8 @@
 
   function handleContinue() {
     if (!selected) return;
-    if (selected === 'icp') {
-      window.location.href = 'unlock.html';
-    } else {
-      document.querySelector('.page-inner').innerHTML = `
-        <div class="logo-wrap">
-          <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
-        </div>
-        <h1 class="heading mb-12">You're all set.</h1>
-        <p class="subheading" style="margin-bottom: 32px;">
-          You have access to 3 folios, 1 export, and 100 AI credits on the free plan.<br>
-          Dive in whenever you're ready.
-        </p>
-        <a href="index.html" class="btn">Go to your dashboard →</a>
-        <p class="small-note" style="margin-top: 20px; font-size: 12px; color: #9ca3af;">
-          Prototype note: routes to existing free dashboard in production
-        </p>
-      `;
-    }
+    const intent = selected === 'icp' ? 'icp' : 'free';
+    window.location.href = 'confirm.html?for=' + intent;
   }
 </script>
 </body>

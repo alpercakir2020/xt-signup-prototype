@@ -1,0 +1,146 @@
+- generic [ref=e2]:
+  - link "← Back to prototype" [ref=e3] [cursor=pointer]:
+    - /url: index.html
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - img "Xtensio" [ref=e7]
+      - heading "Choose your plan" [level=1] [ref=e8]
+      - paragraph [ref=e9]: Every plan includes unlimited folios, unlimited exports, live shareable links, and full branding control.
+      - generic [ref=e11] [cursor=pointer]:
+        - generic [ref=e12]: Monthly
+        - generic [ref=e14]:
+          - text: Annual
+          - generic [ref=e15]: 3 months free
+    - generic [ref=e16]:
+      - generic [ref=e17]:
+        - generic [ref=e18]: Solo
+        - generic [ref=e19]: $18 /mo
+        - generic [ref=e20]: Billed $216/year
+        - generic [ref=e21]: 1 seat · 3 guests
+        - list [ref=e22]:
+          - listitem [ref=e23]:
+            - generic [ref=e24]: ✓
+            - text: 1 custom domain
+          - listitem [ref=e25]:
+            - generic [ref=e26]: ✓
+            - text: 500 AI credits/mo
+          - listitem [ref=e27]:
+            - generic [ref=e28]: ✓
+            - text: 5 GB storage
+          - listitem [ref=e29]:
+            - generic [ref=e30]: ✓
+            - text: Full branding control
+          - listitem [ref=e31]:
+            - generic [ref=e32]: ✓
+            - text: Engagement analytics
+          - listitem [ref=e33]:
+            - generic [ref=e34]: ✓
+            - text: Password-protected links
+          - listitem [ref=e35]:
+            - generic [ref=e36]: —
+            - text: Priority support
+        - link "Get started" [ref=e38] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e39]:
+        - generic [ref=e40]: Team
+        - generic [ref=e41]: $37 /mo
+        - generic [ref=e42]: Billed $444/year
+        - generic [ref=e43]: 3 seats · 5 guests
+        - list [ref=e44]:
+          - listitem [ref=e45]:
+            - generic [ref=e46]: ✓
+            - text: 3 custom domains
+          - listitem [ref=e47]:
+            - generic [ref=e48]: ✓
+            - text: 1,000 AI credits/mo
+          - listitem [ref=e49]:
+            - generic [ref=e50]: ✓
+            - text: 10 GB storage
+          - listitem [ref=e51]:
+            - generic [ref=e52]: ✓
+            - text: Full branding control
+          - listitem [ref=e53]:
+            - generic [ref=e54]: ✓
+            - text: Engagement analytics
+          - listitem [ref=e55]:
+            - generic [ref=e56]: ✓
+            - text: Password-protected links
+          - listitem [ref=e57]:
+            - generic [ref=e58]: —
+            - text: Priority support
+        - link "Get started" [ref=e60] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e61]:
+        - generic [ref=e62]: Most popular
+        - generic [ref=e63]: Agency
+        - generic [ref=e64]: $52 /mo
+        - generic [ref=e65]: Billed $624/year
+        - generic [ref=e66]: 5 seats · 10 guests
+        - list [ref=e67]:
+          - listitem [ref=e68]:
+            - generic [ref=e69]: ✓
+            - text: 10 custom domains
+          - listitem [ref=e70]:
+            - generic [ref=e71]: ✓
+            - text: 5,000 AI credits/mo
+          - listitem [ref=e72]:
+            - generic [ref=e73]: ✓
+            - text: 20 GB storage
+          - listitem [ref=e74]:
+            - generic [ref=e75]: ✓
+            - text: Full branding control
+          - listitem [ref=e76]:
+            - generic [ref=e77]: ✓
+            - text: Engagement analytics
+          - listitem [ref=e78]:
+            - generic [ref=e79]: ✓
+            - text: Password-protected links
+          - listitem [ref=e80]:
+            - generic [ref=e81]: —
+            - text: Priority support
+        - link "Get started" [ref=e83] [cursor=pointer]:
+          - /url: "#"
+      - generic [ref=e84]:
+        - generic [ref=e85]: Business
+        - generic [ref=e86]: $74 /mo
+        - generic [ref=e87]: Billed $888/year
+        - generic [ref=e88]: 10 seats · Unlimited guests
+        - list [ref=e89]:
+          - listitem [ref=e90]:
+            - generic [ref=e91]: ✓
+            - text: Unlimited custom domains
+          - listitem [ref=e92]:
+            - generic [ref=e93]: ✓
+            - text: Unlimited AI credits
+          - listitem [ref=e94]:
+            - generic [ref=e95]: ✓
+            - text: 100 GB storage
+          - listitem [ref=e96]:
+            - generic [ref=e97]: ✓
+            - text: Full branding control
+          - listitem [ref=e98]:
+            - generic [ref=e99]: ✓
+            - text: Engagement analytics
+          - listitem [ref=e100]:
+            - generic [ref=e101]: ✓
+            - text: Password-protected links
+          - listitem [ref=e102]:
+            - generic [ref=e103]: ✓
+            - text: Priority support
+        - link "Get started" [ref=e105] [cursor=pointer]:
+          - /url: "#"
+    - generic [ref=e106]:
+      - paragraph [ref=e107]: All plans include
+      - generic [ref=e108]:
+        - generic [ref=e109]: Unlimited folios
+        - generic [ref=e110]: Unlimited exports
+        - generic [ref=e111]: Live shareable links
+        - generic [ref=e112]: Embed on website
+        - generic [ref=e113]: Revision history
+        - generic [ref=e114]: Unbranded sharing
+        - generic [ref=e115]: Password protection
+        - generic [ref=e116]: Custom URLs
+      - paragraph [ref=e117]:
+        - text: Questions?
+        - link "Talk to us" [ref=e118] [cursor=pointer]:
+          - /url: "#"
