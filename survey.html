@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div class="page">
@@ -23,27 +24,36 @@
     <div class="survey-options">
 
       <div class="survey-option" data-value="icp" onclick="selectOption(this)">
-        <div class="survey-radio"></div>
+        <div class="survey-icon" style="background: rgba(238,114,113,0.12); color: var(--color-primary);">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
         <div>
           <div class="survey-option-title">Work or business</div>
           <div class="survey-option-desc">Client deliverables, proposals, company projects</div>
         </div>
+        <div class="survey-radio"></div>
       </div>
 
       <div class="survey-option" data-value="student" onclick="selectOption(this)">
-        <div class="survey-radio"></div>
+        <div class="survey-icon" style="background: rgba(76,123,160,0.12); color: var(--color-blue);">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
         <div>
           <div class="survey-option-title">School or education</div>
           <div class="survey-option-desc">Assignments, academic presentations, coursework</div>
         </div>
+        <div class="survey-radio"></div>
       </div>
 
       <div class="survey-option" data-value="personal" onclick="selectOption(this)">
-        <div class="survey-radio"></div>
+        <div class="survey-icon" style="background: rgba(0,189,156,0.12); color: var(--color-success);">
+          <i class="fa-solid fa-seedling"></i>
+        </div>
         <div>
           <div class="survey-option-title">Personal projects</div>
           <div class="survey-option-desc">Exploring ideas, personal portfolio, side projects</div>
         </div>
+        <div class="survey-radio"></div>
       </div>
 
     </div>
