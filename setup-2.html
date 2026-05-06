@@ -9,36 +9,24 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .prefill-notice {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      background: rgba(0,189,156,0.07);
-      border: 1px solid rgba(0,189,156,0.25);
-      border-radius: var(--border-radius);
-      padding: 12px 14px;
-      margin-bottom: 20px;
-      font-size: 13px;
-      color: var(--color-navy);
-    }
-    .prefill-notice .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
-    .prefill-notice strong { color: var(--color-success); }
-    .logo-preview-box {
+    .logo-found {
       display: flex;
       align-items: center;
       gap: 14px;
-      background: var(--color-input-bg);
+      background: #fff;
       border: 1px solid var(--color-success);
       border-radius: var(--border-radius);
       padding: 14px 16px;
       margin-bottom: 14px;
       cursor: pointer;
+      transition: border-color 0.15s;
     }
-    .logo-placeholder {
-      width: 52px;
-      height: 52px;
-      background: var(--color-navy);
-      border-radius: var(--border-radius);
+    .logo-found:hover { border-color: #00a888; }
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: #1a2b6d;
+      border-radius: 6px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -47,170 +35,129 @@
       font-size: 20px;
       flex-shrink: 0;
     }
-    .logo-info { flex: 1; }
-    .logo-info .name { font-weight: 600; font-size: 14px; color: var(--color-navy); }
-    .logo-info .hint { font-size: 12px; color: var(--color-text-muted); margin-top: 2px; }
-    .logo-change { font-size: 12px; color: var(--color-blue); cursor: pointer; text-decoration: underline; flex-shrink: 0; }
-    .color-section-title {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--color-text-muted);
-      margin-bottom: 12px;
-    }
-    .color-pairs { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
-    .color-item {
+    .logo-found-info { flex: 1; }
+    .logo-found-name { font-weight: 600; font-size: 14px; color: var(--color-navy); margin-bottom: 2px; }
+    .logo-found-hint { font-size: 12px; color: var(--color-text-secondary); }
+    .logo-found-change { font-size: 12px; color: var(--color-blue); cursor: pointer; text-decoration: underline; flex-shrink: 0; }
+    .color-row { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 8px; }
+    .color-chip {
       display: flex;
       align-items: center;
       gap: 10px;
-      background: var(--color-input-bg);
+      flex: 1;
+      min-width: 140px;
       border: 1px solid var(--color-border);
       border-radius: var(--border-radius);
-      padding: 10px 12px;
+      overflow: hidden;
       cursor: pointer;
       transition: border-color 0.15s;
+      background: #fff;
     }
-    .color-item:hover { border-color: var(--color-blue); }
-    .swatch { width: 36px; height: 36px; border-radius: 4px; flex-shrink: 0; }
-    .color-item-info .label { font-size: 12px; color: var(--color-text-muted); }
-    .color-item-info .hex { font-size: 13px; font-weight: 600; color: var(--color-navy); font-family: monospace; }
-    .empty-upload {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      background: var(--color-input-bg);
-      border: 2px dashed var(--color-border);
-      border-radius: var(--border-radius);
-      padding: 28px;
-      cursor: pointer;
-      transition: border-color 0.15s, background 0.15s;
-      margin-bottom: 14px;
-    }
-    .empty-upload:hover { border-color: var(--color-blue); background: rgba(76,123,160,0.04); }
-    .empty-upload .upload-icon { font-size: 28px; color: var(--color-text-faint); }
-    .empty-upload .upload-text { font-size: 14px; color: var(--color-text-muted); font-weight: 500; }
-    .empty-upload .upload-sub { font-size: 12px; color: var(--color-text-faint); }
-    .tabs {
-      display: flex;
-      gap: 0;
-      border-bottom: 1px solid var(--color-border);
-      margin-bottom: 24px;
-    }
-    .tab {
-      padding: 10px 18px;
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--color-text-muted);
-      cursor: pointer;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: color 0.15s;
-      user-select: none;
-    }
-    .tab.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+    .color-chip:hover { border-color: var(--color-blue); }
+    .color-chip-swatch { width: 48px; height: 48px; flex-shrink: 0; }
+    .color-chip-info { padding: 0 12px 0 0; }
+    .color-chip-label { font-size: 12px; color: var(--color-text-secondary); }
+    .color-chip-hex { font-size: 13px; font-weight: 600; font-family: monospace; color: var(--color-navy); }
+    .color-empty .color-chip-swatch { background: #f3f4f6; border-right: 1px solid var(--color-border); }
+    .color-empty .color-chip-hex { color: var(--color-text-faint); }
   </style>
 </head>
 <body>
 <div class="page">
+  <div class="page-inner">
 
-  <div class="logo-wrap">
-    <img src="https://app.xtensio.com/img/xtensio-icon.jpg" alt="Xtensio" class="logo">
-  </div>
+    <div class="logo-wrap">
+      <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
+    </div>
 
-  <div class="card">
-
-    <!-- Progress -->
-    <div class="progress-steps">
+    <div class="progress-wrap">
       <div class="step-dot done"></div>
       <div class="step-dot active"></div>
       <div class="step-dot upcoming"></div>
     </div>
-    <p class="progress-label">Step 2 of 3 — Brand kit</p>
 
-    <h1 class="heading mb-8">Add your brand</h1>
-    <p class="subheading">Everything you create in Xtensio will automatically match your brand.</p>
+    <h1 class="heading">Add your brand</h1>
+    <p class="subheading">Everything you create in Xtensio automatically matches your brand.</p>
 
-    <!-- Toggle between states -->
-    <div class="tabs">
+    <div class="tabs mb-28">
       <div class="tab active" onclick="showState('prefilled', this)">Auto-fetched (business domain)</div>
       <div class="tab" onclick="showState('empty', this)">Empty (gmail / unknown)</div>
     </div>
 
-    <!-- Prefilled state (business domain user) -->
+    <!-- State: business domain — brand auto-fetched -->
     <div id="state-prefilled">
-      <div class="prefill-notice">
-        <span class="icon">✨</span>
-        <span>We found your brand assets from <strong>acmestudio.com</strong>. Confirm or update below.</span>
+
+      <div class="fetch-notice mb-20">
+        <span style="font-size: 18px;">✨</span>
+        <span>We found your brand from <strong>acmestudio.com</strong>. Confirm or update below.</span>
       </div>
 
-      <div class="section-label">Logo</div>
-      <div class="logo-preview-box">
-        <div class="logo-placeholder">A</div>
-        <div class="logo-info">
-          <div class="name">acme-logo.png</div>
-          <div class="hint">Fetched from acmestudio.com</div>
+      <div class="section-label mb-6">Logo</div>
+      <div class="logo-found">
+        <div class="logo-icon">A</div>
+        <div class="logo-found-info">
+          <div class="logo-found-name">acme-logo.png</div>
+          <div class="logo-found-hint">Fetched from acmestudio.com</div>
         </div>
-        <span class="logo-change">Change</span>
+        <span class="logo-found-change">Change</span>
       </div>
 
-      <div class="section-label" style="margin-top: 16px;">Brand colors</div>
-      <div class="color-pairs">
-        <div class="color-item">
-          <div class="swatch" style="background: #1a2b6d;"></div>
-          <div class="color-item-info">
-            <div class="label">Primary</div>
-            <div class="hex">#1a2b6d</div>
+      <div class="section-label mb-6" style="margin-top: 20px;">Brand colors</div>
+      <div class="color-row">
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #1a2b6d;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Primary</div>
+            <div class="color-chip-hex">#1a2b6d</div>
           </div>
         </div>
-        <div class="color-item">
-          <div class="swatch" style="background: #e8a020;"></div>
-          <div class="color-item-info">
-            <div class="label">Accent</div>
-            <div class="hex">#e8a020</div>
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #e8a020;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Accent</div>
+            <div class="color-chip-hex">#e8a020</div>
           </div>
         </div>
       </div>
-      <p style="font-size: 12px; color: var(--color-text-muted); margin-bottom: 20px;">Click any color to customize it</p>
+      <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 28px;">Click any color to customize it</p>
+
     </div>
 
-    <!-- Empty state (gmail user) -->
+    <!-- State: gmail / unknown — empty brand -->
     <div id="state-empty" style="display: none;">
-      <div class="section-label">Logo</div>
-      <div class="empty-upload">
+
+      <div class="section-label mb-6">Logo</div>
+      <div class="upload-zone mb-20">
         <div class="upload-icon">↑</div>
         <div class="upload-text">Upload your logo</div>
-        <div class="upload-sub">PNG, SVG, or JPG — at least 200×200px</div>
+        <div class="upload-sub">PNG, SVG or JPG — at least 200×200px</div>
       </div>
 
-      <div class="section-label" style="margin-top: 16px;">Brand colors</div>
-      <div class="color-pairs">
-        <div class="color-item">
-          <div class="swatch" style="background: #e3e5e6;"></div>
-          <div class="color-item-info">
-            <div class="label">Primary</div>
-            <div class="hex">Pick a color</div>
+      <div class="section-label mb-6" style="margin-top: 4px;">Brand colors</div>
+      <div class="color-row" style="margin-bottom: 28px;">
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Primary</div>
+            <div class="color-chip-hex">Pick a color</div>
           </div>
         </div>
-        <div class="color-item">
-          <div class="swatch" style="background: #e3e5e6;"></div>
-          <div class="color-item-info">
-            <div class="label">Accent</div>
-            <div class="hex">Pick a color</div>
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Accent</div>
+            <div class="color-chip-hex">Pick a color</div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="edu-line">
-      Everything you create matches your brand automatically.
     </div>
 
     <a href="setup-3.html" class="btn">Next — Invite your team →</a>
 
-    <a href="setup-3.html" class="link-skip">Skip for now</a>
+    <a href="setup-3.html" class="skip-link">Skip for now</a>
 
   </div>
-
 </div>
 
 <script>

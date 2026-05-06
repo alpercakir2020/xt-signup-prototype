@@ -8,195 +8,138 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
-  <style>
-    body { background: #f5f6f7; }
-    .page--wide { padding: 48px 20px 64px; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
-    .back-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 14px; color: var(--color-text-muted); text-decoration: none;
-      margin-bottom: 32px; align-self: flex-start;
-    }
-    .back-link:hover { color: var(--color-navy); }
-    .all-includes {
-      max-width: 1000px; width: 100%;
-      text-align: center;
-      margin-top: 24px;
-    }
-    .all-includes p {
-      font-size: 13px; color: var(--color-text-muted);
-      margin-bottom: 10px;
-    }
-    .includes-pills {
-      display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
-    }
-    .includes-pill {
-      background: #fff; border: 1px solid var(--color-border);
-      border-radius: 20px; padding: 5px 14px;
-      font-size: 12px; color: var(--color-text-muted); font-weight: 500;
-    }
-    .toggle-wrap { display: flex; justify-content: center; margin-bottom: 40px; }
-    .plan-price-monthly { display: none; }
-    .plan-price-annual  { display: block; }
-    body.monthly .plan-price-monthly { display: block; }
-    body.monthly .plan-price-annual  { display: none; }
-    body.monthly .save-badge { display: none; }
-    body.monthly .billed-annual-note { display: none; }
-    body.annual .toggle-pill { }
-  </style>
 </head>
 <body class="annual">
-<div class="page--wide">
-
-  <a href="index.html" class="back-link">← Back to prototype</a>
+<div class="pricing-page">
 
   <div class="pricing-wrap">
 
-    <div class="pricing-header">
-      <div class="logo-wrap" style="margin-bottom: 24px;">
-        <img src="https://app.xtensio.com/img/xtensio-icon.jpg" alt="Xtensio" class="logo">
+    <div class="pricing-head">
+      <div class="logo-wrap">
+        <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
       </div>
-      <h1 class="heading mb-8">Choose your plan</h1>
-      <p class="subheading" style="margin-bottom: 28px;">Every plan includes unlimited folios, unlimited exports, live shareable links, and full branding control.</p>
+
+      <h1 class="heading mb-12">Choose your plan</h1>
+      <p class="subheading" style="margin-bottom: 32px;">Every plan includes unlimited folios, unlimited exports, live shareable links, and full branding control.</p>
 
       <!-- Billing toggle -->
-      <div class="toggle-wrap">
-        <div class="billing-toggle" id="billing-toggle" onclick="toggleBilling()">
-          <span class="toggle-label" id="label-monthly">Monthly</span>
-          <div class="toggle-pill annual" id="toggle-pill"></div>
-          <span class="toggle-label active" id="label-annual">
+      <div style="display: flex; justify-content: center; margin-bottom: 48px;">
+        <div class="billing-toggle" onclick="toggleBilling()" id="billing-toggle">
+          <span class="toggle-lbl" id="lbl-monthly">Monthly</span>
+          <div class="toggle-pill" id="toggle-pill"></div>
+          <span class="toggle-lbl active" id="lbl-annual">
             Annual
-            <span class="save-badge">3 months free</span>
+            <span class="save-chip" id="save-chip">3 months free</span>
           </span>
         </div>
       </div>
     </div>
 
-    <!-- Pricing grid -->
+    <!-- Plan grid -->
     <div class="pricing-grid">
 
       <!-- Solo -->
-      <div class="pricing-card">
+      <div class="plan-card">
         <div class="plan-name">Solo</div>
-
-        <div class="plan-price plan-price-annual">
-          <span class="amount">$18</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-annual">
+          <span class="amount">$18</span><span class="per">/mo</span>
         </div>
-        <div class="plan-price plan-price-monthly">
-          <span class="amount">$24</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-monthly" style="display:none;">
+          <span class="amount">$24</span><span class="per">/mo</span>
         </div>
-        <div class="plan-billed billed-annual-note">Billed $216/year</div>
-        <div class="plan-billed" style="display:none;" id="solo-monthly-note">Billed monthly</div>
-
-        <div class="plan-seats">1 seat · 3 guests</div>
-
+        <div class="plan-billed billed-annual">Billed $216/year</div>
+        <div class="plan-billed billed-monthly" style="display:none;">Billed monthly</div>
+        <div class="plan-seats">1 seat &middot; 3 guests</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span> 1 custom domain</li>
-          <li><span class="check">✓</span> 500 AI credits/mo</li>
-          <li><span class="check">✓</span> 5 GB storage</li>
-          <li><span class="check">✓</span> Full branding control</li>
-          <li><span class="check">✓</span> Engagement analytics</li>
-          <li><span class="check">✓</span> Password-protected links</li>
-          <li><span class="dash">—</span> Priority support</li>
+          <li><span class="yes">✓</span> 1 custom domain</li>
+          <li><span class="yes">✓</span> 500 AI credits/mo</li>
+          <li><span class="yes">✓</span> 5 GB storage</li>
+          <li><span class="yes">✓</span> Full branding control</li>
+          <li><span class="yes">✓</span> Engagement analytics</li>
+          <li><span class="yes">✓</span> Password-protected links</li>
+          <li><span class="no">—</span> Priority support</li>
         </ul>
-
         <div class="plan-cta">
-          <a href="#" class="btn btn-outline">Get started</a>
+          <a href="#" class="btn btn-ghost">Get started</a>
         </div>
       </div>
 
       <!-- Team -->
-      <div class="pricing-card">
+      <div class="plan-card">
         <div class="plan-name">Team</div>
-
-        <div class="plan-price plan-price-annual">
-          <span class="amount">$37</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-annual">
+          <span class="amount">$37</span><span class="per">/mo</span>
         </div>
-        <div class="plan-price plan-price-monthly">
-          <span class="amount">$49</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-monthly" style="display:none;">
+          <span class="amount">$49</span><span class="per">/mo</span>
         </div>
-        <div class="plan-billed billed-annual-note">Billed $444/year</div>
-
-        <div class="plan-seats">3 seats · 5 guests</div>
-
+        <div class="plan-billed billed-annual">Billed $444/year</div>
+        <div class="plan-billed billed-monthly" style="display:none;">Billed monthly</div>
+        <div class="plan-seats">3 seats &middot; 5 guests</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span> 3 custom domains</li>
-          <li><span class="check">✓</span> 1,000 AI credits/mo</li>
-          <li><span class="check">✓</span> 10 GB storage</li>
-          <li><span class="check">✓</span> Full branding control</li>
-          <li><span class="check">✓</span> Engagement analytics</li>
-          <li><span class="check">✓</span> Password-protected links</li>
-          <li><span class="dash">—</span> Priority support</li>
+          <li><span class="yes">✓</span> 3 custom domains</li>
+          <li><span class="yes">✓</span> 1,000 AI credits/mo</li>
+          <li><span class="yes">✓</span> 10 GB storage</li>
+          <li><span class="yes">✓</span> Full branding control</li>
+          <li><span class="yes">✓</span> Engagement analytics</li>
+          <li><span class="yes">✓</span> Password-protected links</li>
+          <li><span class="no">—</span> Priority support</li>
         </ul>
-
         <div class="plan-cta">
-          <a href="#" class="btn btn-outline">Get started</a>
+          <a href="#" class="btn btn-ghost">Get started</a>
         </div>
       </div>
 
       <!-- Agency — Recommended -->
-      <div class="pricing-card recommended">
-        <div class="recommended-badge">Most popular</div>
+      <div class="plan-card featured">
+        <div class="featured-badge">Most popular</div>
         <div class="plan-name">Agency</div>
-
-        <div class="plan-price plan-price-annual">
-          <span class="amount">$52</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-annual">
+          <span class="amount">$52</span><span class="per">/mo</span>
         </div>
-        <div class="plan-price plan-price-monthly">
-          <span class="amount">$69</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-monthly" style="display:none;">
+          <span class="amount">$69</span><span class="per">/mo</span>
         </div>
-        <div class="plan-billed billed-annual-note">Billed $624/year</div>
-
-        <div class="plan-seats">5 seats · 10 guests</div>
-
+        <div class="plan-billed billed-annual">Billed $624/year</div>
+        <div class="plan-billed billed-monthly" style="display:none;">Billed monthly</div>
+        <div class="plan-seats">5 seats &middot; 10 guests</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span> 10 custom domains</li>
-          <li><span class="check">✓</span> 5,000 AI credits/mo</li>
-          <li><span class="check">✓</span> 20 GB storage</li>
-          <li><span class="check">✓</span> Full branding control</li>
-          <li><span class="check">✓</span> Engagement analytics</li>
-          <li><span class="check">✓</span> Password-protected links</li>
-          <li><span class="dash">—</span> Priority support</li>
+          <li><span class="yes">✓</span> 10 custom domains</li>
+          <li><span class="yes">✓</span> 5,000 AI credits/mo</li>
+          <li><span class="yes">✓</span> 20 GB storage</li>
+          <li><span class="yes">✓</span> Full branding control</li>
+          <li><span class="yes">✓</span> Engagement analytics</li>
+          <li><span class="yes">✓</span> Password-protected links</li>
+          <li><span class="no">—</span> Priority support</li>
         </ul>
-
         <div class="plan-cta">
           <a href="#" class="btn">Get started</a>
         </div>
       </div>
 
       <!-- Business -->
-      <div class="pricing-card">
+      <div class="plan-card">
         <div class="plan-name">Business</div>
-
-        <div class="plan-price plan-price-annual">
-          <span class="amount">$74</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-annual">
+          <span class="amount">$74</span><span class="per">/mo</span>
         </div>
-        <div class="plan-price plan-price-monthly">
-          <span class="amount">$99</span>
-          <span class="per">/mo</span>
+        <div class="plan-price price-monthly" style="display:none;">
+          <span class="amount">$99</span><span class="per">/mo</span>
         </div>
-        <div class="plan-billed billed-annual-note">Billed $888/year</div>
-
-        <div class="plan-seats">10 seats · Unlimited guests</div>
-
+        <div class="plan-billed billed-annual">Billed $888/year</div>
+        <div class="plan-billed billed-monthly" style="display:none;">Billed monthly</div>
+        <div class="plan-seats">10 seats &middot; Unlimited guests</div>
         <ul class="plan-features">
-          <li><span class="check">✓</span> Unlimited custom domains</li>
-          <li><span class="check">✓</span> Unlimited AI credits</li>
-          <li><span class="check">✓</span> 100 GB storage</li>
-          <li><span class="check">✓</span> Full branding control</li>
-          <li><span class="check">✓</span> Engagement analytics</li>
-          <li><span class="check">✓</span> Password-protected links</li>
-          <li><span class="check">✓</span> Priority support</li>
+          <li><span class="yes">✓</span> Unlimited custom domains</li>
+          <li><span class="yes">✓</span> Unlimited AI credits</li>
+          <li><span class="yes">✓</span> 100 GB storage</li>
+          <li><span class="yes">✓</span> Full branding control</li>
+          <li><span class="yes">✓</span> Engagement analytics</li>
+          <li><span class="yes">✓</span> Password-protected links</li>
+          <li><span class="yes">✓</span> Priority support</li>
         </ul>
-
         <div class="plan-cta">
-          <a href="#" class="btn btn-outline">Get started</a>
+          <a href="#" class="btn btn-ghost">Get started</a>
         </div>
       </div>
 
@@ -204,7 +147,7 @@
 
     <!-- All plans include -->
     <div class="all-includes">
-      <p style="font-size: 13px; color: var(--color-text-muted); margin-bottom: 12px; font-weight: 500;">All plans include</p>
+      <p class="section-label">All plans include</p>
       <div class="includes-pills">
         <span class="includes-pill">Unlimited folios</span>
         <span class="includes-pill">Unlimited exports</span>
@@ -215,8 +158,8 @@
         <span class="includes-pill">Password protection</span>
         <span class="includes-pill">Custom URLs</span>
       </div>
-      <p style="margin-top: 20px; font-size: 13px; color: var(--color-text-muted);">
-        Questions? <a href="#" style="color: var(--color-blue); text-decoration: none;">Talk to us</a>
+      <p style="margin-top: 20px; font-size: 13px; color: var(--color-text-secondary);">
+        Questions? <a href="#" class="link">Talk to us</a>
       </p>
     </div>
 
@@ -228,23 +171,27 @@
 
   function toggleBilling() {
     isAnnual = !isAnnual;
-    const body = document.body;
-    const pill = document.getElementById('toggle-pill');
-    const labelMonthly = document.getElementById('label-monthly');
-    const labelAnnual = document.getElementById('label-annual');
+
+    document.querySelectorAll('.price-annual').forEach(el => el.style.display = isAnnual ? '' : 'none');
+    document.querySelectorAll('.price-monthly').forEach(el => el.style.display = isAnnual ? 'none' : '');
+    document.querySelectorAll('.billed-annual').forEach(el => el.style.display = isAnnual ? '' : 'none');
+    document.querySelectorAll('.billed-monthly').forEach(el => el.style.display = isAnnual ? 'none' : '');
+
+    const lblMonthly = document.getElementById('lbl-monthly');
+    const lblAnnual  = document.getElementById('lbl-annual');
+    const saveChip   = document.getElementById('save-chip');
+    const pill       = document.getElementById('toggle-pill');
 
     if (isAnnual) {
-      body.className = 'annual';
-      pill.className = 'toggle-pill annual';
-      labelAnnual.classList.add('active');
-      labelMonthly.classList.remove('active');
+      lblAnnual.classList.add('active');
+      lblMonthly.classList.remove('active');
+      saveChip.style.opacity = '1';
+      pill.style.background = 'var(--color-primary)';
     } else {
-      body.className = 'monthly';
-      pill.className = 'toggle-pill monthly';
-      labelMonthly.classList.add('active');
-      labelAnnual.classList.remove('active');
-      /* show monthly billing note */
-      document.querySelectorAll('[id$="-monthly-note"]').forEach(el => el.style.display = '');
+      lblMonthly.classList.add('active');
+      lblAnnual.classList.remove('active');
+      saveChip.style.opacity = '0';
+      pill.style.background = '#d1d5db';
     }
   }
 </script>

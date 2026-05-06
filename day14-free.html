@@ -9,16 +9,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    body { background: rgba(5,43,62,0.05); }
-    .block-page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 48px 20px 80px;
-    }
-    .folio-archive-notice {
-      background: rgba(238,114,113,0.08);
+    .archive-warning {
+      background: rgba(238,114,113,0.07);
       border: 1px solid rgba(238,114,113,0.2);
       border-radius: var(--border-radius);
       padding: 14px 18px;
@@ -28,82 +20,55 @@
       display: flex;
       gap: 10px;
       align-items: flex-start;
-    }
-    .folio-archive-notice .icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
-    .btn-back {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: transparent;
-      color: var(--color-blue);
-      border: 1px solid var(--color-border);
-      border-radius: var(--border-radius);
-      font-size: 15px;
-      font-family: var(--font);
-      font-weight: 600;
-      cursor: pointer;
-      height: 52px;
-      width: 100%;
-      justify-content: center;
-      text-decoration: none;
-      margin-top: 12px;
-      transition: background 0.15s;
-    }
-    .btn-back:hover { background: var(--color-input-bg); }
-    .upgrade-later {
-      text-align: center;
-      font-size: 13px;
-      color: var(--color-text-muted);
-      margin-top: 16px;
       line-height: 1.5;
     }
-    .upgrade-later a { color: var(--color-blue); text-decoration: none; }
-    .upgrade-later a:hover { text-decoration: underline; }
+    .archive-warning .icon { flex-shrink: 0; font-size: 16px; margin-top: 1px; }
   </style>
 </head>
 <body>
 <div class="block-page">
+  <div class="block-inner">
 
-  <div class="logo-wrap" style="margin-bottom: 28px;">
-    <img src="https://app.xtensio.com/img/xtensio-icon.jpg" alt="Xtensio" class="logo">
-  </div>
+    <div class="logo-wrap" style="margin-bottom: 32px;">
+      <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
+    </div>
 
-  <div class="block-card">
-
-    <h1 class="heading mb-8">Continuing with the free plan</h1>
+    <h1 class="heading mb-12">Continuing with the free plan</h1>
     <p class="subheading" style="margin-bottom: 20px;">Here's exactly what changes when you downgrade. You can upgrade anytime to restore full access.</p>
 
     <!-- Folio archive warning -->
-    <div class="folio-archive-notice">
+    <div class="archive-warning">
       <span class="icon">⚠️</span>
       <span>
-        You have <strong>7 folios</strong>. The free plan allows <strong>3</strong>. Your 4 oldest folios will be archived — they won't be deleted, but you won't be able to edit or share them until you upgrade.
+        You have <strong>7 folios</strong>. The free plan allows <strong>3</strong>.
+        Your 4 oldest folios will be archived — they won't be deleted, but you won't be able to
+        edit or share them until you upgrade.
       </span>
     </div>
 
-    <!-- What you keep / what you lose -->
-    <div class="consequence-grid">
-      <div class="consequence-col keep">
-        <div class="consequence-col-title">You keep</div>
-        <ul class="consequence-list">
-          <li><span style="color:var(--color-success); font-weight:700; flex-shrink:0;">✓</span> 3 folios (newest)</li>
-          <li><span style="color:var(--color-success); font-weight:700; flex-shrink:0;">✓</span> 1 export (watermarked)</li>
-          <li><span style="color:var(--color-success); font-weight:700; flex-shrink:0;">✓</span> 100 AI credits</li>
-          <li><span style="color:var(--color-success); font-weight:700; flex-shrink:0;">✓</span> Basic templates</li>
-          <li><span style="color:var(--color-success); font-weight:700; flex-shrink:0;">✓</span> Your workspace URL</li>
+    <!-- Keep / lose grid -->
+    <div class="downgrade-grid">
+      <div class="dg-col keep">
+        <div class="dg-title">You keep</div>
+        <ul class="dg-list">
+          <li><span class="dg-check">✓</span> 3 folios (newest)</li>
+          <li><span class="dg-check">✓</span> 1 export (watermarked)</li>
+          <li><span class="dg-check">✓</span> 100 AI credits</li>
+          <li><span class="dg-check">✓</span> Basic templates</li>
+          <li><span class="dg-check">✓</span> Your workspace URL</li>
         </ul>
       </div>
 
-      <div class="consequence-col lose">
-        <div class="consequence-col-title">You lose</div>
-        <ul class="consequence-list">
-          <li><span style="color:var(--color-primary); font-weight:700; flex-shrink:0;">✕</span> 4 folios archived</li>
-          <li><span style="color:var(--color-primary); font-weight:700; flex-shrink:0;">✕</span> Unlimited exports</li>
-          <li><span style="color:var(--color-primary); font-weight:700; flex-shrink:0;">✕</span> Custom branding</li>
-          <li><span style="color:var(--color-primary); font-weight:700; flex-shrink:0;">✕</span> Custom domain</li>
-          <li><span style="color:var(--color-primary); font-weight:700; flex-shrink:0;">✕</span> Analytics</li>
-          <li><span style="color:var(--color-primary); font-weight:700; flex-shrink:0;">✕</span> Collaboration</li>
-          <li><span style="color:var(--color-primary); font-weight:700; flex-shrink:0;">✕</span> Unbranded live links</li>
+      <div class="dg-col lose">
+        <div class="dg-title">You lose</div>
+        <ul class="dg-list">
+          <li><span class="dg-cross">✕</span> 4 folios archived</li>
+          <li><span class="dg-cross">✕</span> Unlimited exports</li>
+          <li><span class="dg-cross">✕</span> Custom branding</li>
+          <li><span class="dg-cross">✕</span> Custom domain</li>
+          <li><span class="dg-cross">✕</span> Analytics</li>
+          <li><span class="dg-cross">✕</span> Collaboration</li>
+          <li><span class="dg-cross">✕</span> Unbranded live links</li>
         </ul>
       </div>
     </div>
@@ -112,16 +77,15 @@
       Continue with free plan
     </button>
 
-    <a href="day14.html" class="btn-back">
+    <a href="day14.html" class="btn btn-ghost" style="margin-top: 10px; text-decoration: none;">
       ← Actually, I want to choose a plan
     </a>
 
-    <div class="upgrade-later">
-      You can <a href="pricing.html">upgrade anytime</a> to restore your archived folios and full access.
-    </div>
+    <p class="small-note" style="margin-top: 20px;">
+      You can <a href="pricing.html" class="link">upgrade anytime</a> to restore your archived folios and full access.
+    </p>
 
   </div>
-
 </div>
 </body>
 </html>
