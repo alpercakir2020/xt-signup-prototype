@@ -118,29 +118,25 @@
       </div>
     </div>
 
-    <!-- Brand section — empty state -->
+    <!-- Brand section — flat, no collapsible -->
     <div class="section-label" style="margin-top: 28px; margin-bottom: 12px; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--color-navy);">Your brand</div>
 
-    <div class="brand-row" id="brand-row">
-      <div class="brand-logo-icon" id="brand-icon">A</div>
-      <div class="brand-info">
-        <div class="brand-info-name" id="brand-info-name">Set your colors, add your logo</div>
-      </div>
-      <a href="#" class="link" id="change-brand-link" style="font-size: 13px; flex-shrink: 0; margin-left: 8px;" onclick="toggleBrandEdit(event)">Set up</a>
-    </div>
+    <div style="border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px; background: #fafafa;">
 
-    <!-- Brand edit panel — starts open for Google signup to prompt action -->
-    <div id="brand-edit-panel" style="display: block; margin-top: 12px; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px; background: #fafafa;">
-      <div style="margin-bottom: 14px;">
-        <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Logo</div>
-        <div id="logo-upload-zone" onclick="document.getElementById('logo-file').click()" style="border: 1.5px dashed var(--color-border); border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; transition: border-color 0.15s;" onmouseenter="this.style.borderColor='var(--color-primary)'" onmouseleave="this.style.borderColor='var(--color-border)'">
-          <div style="font-size: 13px; color: var(--color-text-secondary);">Upload logo <span style="color: var(--color-text-faint); font-size: 12px;">PNG, SVG — any size</span></div>
+      <!-- Logo row — compact -->
+      <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+        <div id="brand-icon" class="brand-logo-icon">A</div>
+        <div>
+          <label for="logo-file" style="font-size: 13px; color: var(--color-blue); font-weight: 500; cursor: pointer;">Upload logo</label>
+          <span style="font-size: 12px; color: var(--color-text-faint); margin-left: 6px;">PNG or SVG</span>
+          <input type="file" id="logo-file" accept="image/*" style="display:none" onchange="previewLogo(this)">
         </div>
-        <input type="file" id="logo-file" accept="image/*" style="display:none" onchange="previewLogo(this)">
       </div>
-      <div>
+
+      <!-- Brand color -->
+      <div style="margin-bottom: 14px;">
         <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand color</div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
           <span class="color-swatch selected-swatch" style="background: #1a2b6d;" onclick="pickColor(this, '#1a2b6d')"></span>
           <span class="color-swatch" style="background: #e8a020;" onclick="pickColor(this, '#e8a020')"></span>
           <span class="color-swatch" style="background: #ee7271;" onclick="pickColor(this, '#ee7271')"></span>
@@ -150,16 +146,32 @@
           </label>
         </div>
       </div>
-      <div style="margin-top: 14px; text-align: right;">
-        <a href="#" class="link" style="font-size: 13px;" onclick="toggleBrandEdit(event)">Done</a>
+
+      <!-- Brand font -->
+      <div>
+        <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand font</div>
+        <select class="form-input" id="font-select" style="height: 44px; font-size: 13px; color: var(--color-navy);" onchange="handleFontChange(this)">
+          <option value="inter">Inter (detected from site)</option>
+          <option value="plus-jakarta-sans">Plus Jakarta Sans</option>
+          <option value="dm-sans">DM Sans</option>
+          <option value="poppins">Poppins</option>
+          <option value="lato">Lato</option>
+          <option value="open-sans">Open Sans</option>
+          <option value="montserrat">Montserrat</option>
+          <option value="search">Search Google Fonts…</option>
+        </select>
+        <div id="font-search-wrap" style="display: none; margin-top: 8px;">
+          <input class="form-input" type="text" id="font-search" placeholder="e.g. Nunito, Raleway, Oswald…" style="font-size: 13px;">
+        </div>
       </div>
+
     </div>
 
     <p style="font-size: 12px; color: var(--color-text-faint); margin-top: 8px;">
       You can update branding anytime from workspace settings.
     </p>
 
-    <a href="allset.html" class="btn" style="margin-top: 28px;">Enter my workspace →</a>
+    <a href="allset.html" class="btn" style="margin-top: 20px;">Enter my workspace →</a>
     <a href="allset.html" class="skip-link">Set up later</a>
 
   </div>
@@ -190,13 +202,8 @@
     if (clean !== val) input.value = clean;
   }
 
-  function toggleBrandEdit(e) {
-    e.preventDefault();
-    const panel = document.getElementById('brand-edit-panel');
-    const link = document.getElementById('change-brand-link');
-    const open = panel.style.display !== 'none';
-    panel.style.display = open ? 'none' : 'block';
-    link.textContent = open ? 'Set up' : 'Done';
+  function handleFontChange(sel) {
+    document.getElementById('font-search-wrap').style.display = sel.value === 'search' ? 'block' : 'none';
   }
 
   function previewLogo(input) {
