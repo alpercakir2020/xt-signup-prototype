@@ -9,6 +9,69 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .setup-divider {
+      border: none;
+      border-top: 1px solid #f0f2f5;
+      margin: 24px 0;
+    }
+    .logo-found {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      border: 1px solid var(--color-success);
+      border-radius: var(--border-radius);
+      padding: 10px 14px;
+      margin-bottom: 14px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+    .logo-found:hover { border-color: #00a888; }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: #1a2b6d;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .logo-found-info { flex: 1; }
+    .logo-found-name { font-weight: 600; font-size: 14px; color: var(--color-navy); margin-bottom: 2px; }
+    .logo-found-hint { font-size: 12px; color: var(--color-text-secondary); }
+    .logo-found-change { font-size: 12px; color: var(--color-blue); cursor: pointer; text-decoration: underline; flex-shrink: 0; }
+    .color-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .color-chip {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      cursor: pointer;
+      transition: border-color 0.15s;
+      background: #fff;
+    }
+    .color-chip:hover { border-color: var(--color-blue); }
+    .color-chip-swatch { width: 40px; height: 40px; flex-shrink: 0; }
+    .color-chip-info { padding: 0 12px; }
+    .color-chip-label { font-size: 11px; color: var(--color-text-faint); text-transform: uppercase; letter-spacing: 0.05em; }
+    .color-chip-hex { font-size: 13px; font-weight: 600; font-family: monospace; color: var(--color-navy); }
+    .color-empty .color-chip-swatch {
+      background: repeating-linear-gradient(45deg, #f3f4f6, #f3f4f6 4px, #e5e7eb 4px, #e5e7eb 8px);
+    }
+    .color-empty .color-chip-hex { color: var(--color-text-faint); font-family: var(--font); font-weight: 500; font-size: 13px; }
+  </style>
 </head>
 <body>
 <div class="page">
@@ -16,12 +79,6 @@
 
     <div class="logo-wrap">
       <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
-    </div>
-
-    <div class="progress-wrap">
-      <div class="step-dot active"></div>
-      <div class="step-dot upcoming"></div>
-      <div class="step-dot upcoming"></div>
     </div>
 
     <h1 class="heading" style="margin-bottom: 10px; text-align: left;">Set up your workspace</h1>
@@ -39,7 +96,7 @@
       >
     </div>
 
-    <div class="form-group" style="margin-bottom: 20px;">
+    <div class="form-group" style="margin-bottom: 0;">
       <label class="form-label" for="workspace-slug">Workspace URL</label>
       <p class="form-helper">Your work lives here.</p>
       <div class="slug-row">
@@ -55,9 +112,115 @@
       <p id="slug-hint" style="font-size: 13px; margin-top: 8px; min-height: 18px;"></p>
     </div>
 
-    <a href="setup-2.html" class="btn">Next — Brand kit →</a>
+    <hr class="setup-divider">
 
-    <a href="setup-2.html" class="skip-link">Skip for now</a>
+    <div class="section-label" style="margin-bottom: 12px;">Your brand</div>
+
+    <div class="tabs" style="margin-bottom: 16px;">
+      <div class="tab active" onclick="showState('prefilled', this)">Auto-fetched (business domain)</div>
+      <div class="tab" onclick="showState('empty', this)">Enter manually (gmail)</div>
+    </div>
+
+    <!-- State: business domain -->
+    <div id="state-prefilled">
+
+      <div class="fetch-notice" style="margin-bottom: 16px;">
+        <span style="font-size: 18px;">✨</span>
+        <span>We found your brand from <strong>acmestudio.com</strong>. Confirm or update below.</span>
+      </div>
+
+      <div class="section-label mb-6">Logo</div>
+      <div class="logo-found">
+        <div class="logo-icon">A</div>
+        <div class="logo-found-info">
+          <div class="logo-found-name">acme-logo.png</div>
+          <div class="logo-found-hint">Fetched from acmestudio.com</div>
+        </div>
+        <span class="logo-found-change">Change</span>
+      </div>
+
+      <div class="section-label mb-6" style="margin-top: 8px;">Brand colors</div>
+      <div class="color-grid">
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #1a2b6d;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Primary</div>
+            <div class="color-chip-hex">#1a2b6d</div>
+          </div>
+        </div>
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #e8a020;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Secondary</div>
+            <div class="color-chip-hex">#e8a020</div>
+          </div>
+        </div>
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #0f172a;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Dark</div>
+            <div class="color-chip-hex">#0f172a</div>
+          </div>
+        </div>
+        <div class="color-chip">
+          <div class="color-chip-swatch" style="background: #f8fafc; border-right: 1px solid #e9ecf0;"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Light</div>
+            <div class="color-chip-hex">#f8fafc</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 0;">Click any color to customize it</p>
+
+    </div>
+
+    <!-- State: gmail / unknown -->
+    <div id="state-empty" style="display: none;">
+
+      <div class="section-label mb-6">Logo</div>
+      <div class="upload-zone" style="margin-bottom: 24px;">
+        <div class="upload-icon">↑</div>
+        <div class="upload-text">Upload your logo</div>
+        <div class="upload-sub">PNG, SVG or JPG — at least 200×200px</div>
+      </div>
+
+      <div class="section-label mb-6">Brand colors</div>
+      <div class="color-grid" style="margin-bottom: 0;">
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Primary</div>
+            <div class="color-chip-hex">Pick color</div>
+          </div>
+        </div>
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Secondary</div>
+            <div class="color-chip-hex">Pick color</div>
+          </div>
+        </div>
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Dark</div>
+            <div class="color-chip-hex">Pick color</div>
+          </div>
+        </div>
+        <div class="color-chip color-empty">
+          <div class="color-chip-swatch"></div>
+          <div class="color-chip-info">
+            <div class="color-chip-label">Light</div>
+            <div class="color-chip-hex">Pick color</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <a href="index.html" class="btn" style="margin-top: 28px;">Enter my workspace →</a>
+
+    <a href="index.html" class="skip-link">Set up later</a>
 
   </div>
 </div>
@@ -76,6 +239,13 @@
     const clean = val.toLowerCase().replace(/[^a-z0-9-]/g, '');
     if (clean !== val) input.value = clean;
     hint.innerHTML = '<span style="color:var(--color-success);font-weight:500;">' + clean + '.xtensio.com</span> — looks good';
+  }
+
+  function showState(state, tabEl) {
+    document.getElementById('state-prefilled').style.display = state === 'prefilled' ? '' : 'none';
+    document.getElementById('state-empty').style.display = state === 'empty' ? '' : 'none';
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tabEl.classList.add('active');
   }
 </script>
 </body>
