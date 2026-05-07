@@ -14,16 +14,18 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
-      margin-bottom: 28px;
+      margin-bottom: 12px;
     }
     .survey-option {
       flex-direction: column;
       align-items: center;
       text-align: center;
-      padding: 24px 16px;
-      gap: 12px;
+      padding: 28px 16px 24px;
+      gap: 14px;
+      min-height: 180px;
+      justify-content: flex-start;
     }
-    .survey-icon { font-size: 22px; }
+    .survey-icon { font-size: 30px; }
     .survey-option-title { font-size: 14px; }
     .survey-option-desc { font-size: 12px; }
   </style>
@@ -36,12 +38,11 @@
       <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
     </div>
 
-    <h1 class="heading">One quick question</h1>
-    <p class="subheading">What will you mainly use Xtensio for?</p>
+    <h1 class="heading mb-12">What brings you here?</h1>
 
     <div class="survey-options">
 
-      <div class="survey-option" data-value="icp" onclick="selectOption(this)">
+      <div class="survey-option" data-value="icp" onclick="navigate(this)">
         <div class="survey-icon" style="color: var(--color-primary);">
           <i class="fa-solid fa-briefcase"></i>
         </div>
@@ -51,52 +52,37 @@
         </div>
       </div>
 
-      <div class="survey-option" data-value="student" onclick="selectOption(this)">
+      <div class="survey-option" data-value="student" onclick="navigate(this)">
         <div class="survey-icon" style="color: var(--color-blue);">
           <i class="fa-solid fa-graduation-cap"></i>
         </div>
         <div>
           <div class="survey-option-title">School or education</div>
-          <div class="survey-option-desc">Assignments, academic presentations, coursework</div>
+          <div class="survey-option-desc">Assignments, presentations, coursework</div>
         </div>
       </div>
 
-      <div class="survey-option" data-value="personal" onclick="selectOption(this)">
+      <div class="survey-option" data-value="personal" onclick="navigate(this)">
         <div class="survey-icon" style="color: var(--color-success);">
           <i class="fa-solid fa-seedling"></i>
         </div>
         <div>
           <div class="survey-option-title">Personal projects</div>
-          <div class="survey-option-desc">Exploring ideas, personal portfolio, side projects</div>
+          <div class="survey-option-desc">Portfolio, side projects, exploring ideas</div>
         </div>
       </div>
 
     </div>
 
-    <button class="btn" id="continue-btn" disabled onclick="handleContinue()">
-      Continue
-    </button>
-
   </div>
 </div>
 
 <script>
-  let selected = null;
-
-  function selectOption(el) {
+  function navigate(el) {
     document.querySelectorAll('.survey-option').forEach(o => o.classList.remove('selected'));
     el.classList.add('selected');
-    selected = el.dataset.value;
-    document.getElementById('continue-btn').disabled = false;
-  }
-
-  function handleContinue() {
-    if (!selected) return;
-    if (selected === 'icp') {
-      window.location.href = 'unlock.html';
-    } else {
-      window.location.href = 'confirm.html?for=free';
-    }
+    const dest = el.dataset.value === 'icp' ? 'unlock.html' : 'confirm.html?for=free';
+    setTimeout(() => window.location.href = dest, 120);
   }
 </script>
 </body>

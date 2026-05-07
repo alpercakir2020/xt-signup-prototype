@@ -27,13 +27,21 @@
       <div class="step-dot active"></div>
     </div>
 
-    <h1 class="heading" style="margin-bottom: 10px;">Bring your team</h1>
-    <p class="subheading" style="margin-bottom: 4px;">Everyone works in one shared workspace — one brand, one place.</p>
-    <p style="font-size: 14px; color: var(--color-text-secondary); font-style: italic; text-align: center; margin-bottom: 0;">You can always do this later.</p>
+    <h1 class="heading" style="margin-bottom: 10px; text-align: left;">Bring your team</h1>
+    <p class="subheading" style="text-align: left; margin-bottom: 4px;">Everyone works in one shared workspace — one brand, one place.</p>
+    <p style="font-size: 14px; color: var(--color-text-secondary); font-style: italic; text-align: left; margin-bottom: 0;">You can always do this later.</p>
 
     <div class="form-group" style="margin-top: 20px; margin-bottom: 8px;">
       <label class="form-label">Teammate email addresses</label>
       <div id="invite-rows">
+        <div class="invite-row">
+          <input class="form-input" type="email" placeholder="colleague@yourcompany.com">
+          <button class="remove-btn" onclick="removeRow(this)" title="Remove">×</button>
+        </div>
+        <div class="invite-row">
+          <input class="form-input" type="email" placeholder="colleague@yourcompany.com">
+          <button class="remove-btn" onclick="removeRow(this)" title="Remove">×</button>
+        </div>
         <div class="invite-row">
           <input class="form-input" type="email" placeholder="colleague@yourcompany.com">
           <button class="remove-btn" onclick="removeRow(this)" title="Remove">×</button>
