@@ -10,14 +10,23 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    .downgrade-note {
+    .trial-eyebrow {
       font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .trial-caveat {
+      font-size: 13px;
       color: var(--color-text-faint);
       text-align: center;
-      margin-top: 14px;
-      line-height: 1.5;
+      margin-bottom: 28px;
+      line-height: 1.6;
     }
-    .downgrade-note a { color: var(--color-text-secondary); text-decoration: underline; }
+    .trial-caveat a { color: var(--color-text-secondary); text-decoration: underline; }
   </style>
 </head>
 <body>
@@ -28,14 +37,11 @@
       <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
     </div>
 
-    <div class="text-center" style="margin-bottom: 16px;">
-      <div class="unlock-badge">
-        <span class="check-icon">✓</span>
-        14-day full access — starts now
-      </div>
-    </div>
+    <p class="trial-eyebrow">Business trial</p>
 
-    <h1 class="heading" style="margin-bottom: 20px; font-size: 40px;">Everything's unlocked.<br>14 days, full access.</h1>
+    <h1 class="heading" style="margin-bottom: 12px; font-size: 40px;">You're getting everything.<br>14 days, no limits.</h1>
+
+    <p class="trial-caveat">Because you're here to work with clients, we unlocked the full workspace.<br>After 14 days, it moves to the <a href="#">free plan</a> unless you subscribe — you won't lose your work.</p>
 
     <ul class="feature-list">
       <li>
@@ -53,10 +59,6 @@
     </ul>
 
     <a href="setup-1.html" class="btn">Set up your workspace →</a>
-
-    <p class="downgrade-note">
-      After 14 days, your workspace moves to the <a href="#">free plan</a> unless you subscribe. You won't lose your work.
-    </p>
 
   </div>
 </div>
