@@ -8,6 +8,34 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .font-dd { position: relative; }
+    .font-dd-trigger {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 14px; height: 44px;
+      background: #fff; border: 1px solid #d1d5db; border-radius: var(--border-radius);
+      font-size: 13px; color: var(--color-navy); cursor: pointer; user-select: none;
+      transition: border-color 0.15s;
+    }
+    .font-dd-trigger:hover { border-color: #9ca3af; }
+    .font-dd-trigger i { font-size: 10px; color: var(--color-text-faint); transition: transform 0.18s; }
+    .font-dd.open .font-dd-trigger { border-color: var(--color-navy); }
+    .font-dd.open .font-dd-trigger i { transform: rotate(180deg); }
+    .font-dd-list {
+      position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+      background: #fff; border: 1px solid var(--color-border);
+      border-radius: var(--border-radius);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1); z-index: 50; overflow: hidden;
+    }
+    .font-opt {
+      padding: 10px 14px; font-size: 13px; color: var(--color-navy);
+      cursor: pointer; transition: background 0.1s;
+    }
+    .font-opt:hover { background: #f3f4f6; }
+    .font-opt.active { color: var(--color-primary); font-weight: 600; background: rgba(238,114,113,0.06); }
+    .font-opt.search-opt { color: var(--color-blue); border-top: 1px solid var(--color-border); }
+  </style>
   <style>
     .brand-row {
       display: flex;
@@ -133,9 +161,9 @@
         </div>
       </div>
 
-      <!-- Brand color -->
+      <!-- Brand colors -->
       <div style="margin-bottom: 14px;">
-        <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand color</div>
+        <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand colors</div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
           <span class="color-swatch selected-swatch" style="background: #1a2b6d;" onclick="pickColor(this, '#1a2b6d')"></span>
           <span class="color-swatch" style="background: #e8a020;" onclick="pickColor(this, '#e8a020')"></span>
@@ -150,16 +178,22 @@
       <!-- Brand font -->
       <div>
         <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand font</div>
-        <select class="form-input" id="font-select" style="height: 44px; font-size: 13px; color: var(--color-navy);" onchange="handleFontChange(this)">
-          <option value="inter">Inter (detected from site)</option>
-          <option value="plus-jakarta-sans">Plus Jakarta Sans</option>
-          <option value="dm-sans">DM Sans</option>
-          <option value="poppins">Poppins</option>
-          <option value="lato">Lato</option>
-          <option value="open-sans">Open Sans</option>
-          <option value="montserrat">Montserrat</option>
-          <option value="search">Search Google Fonts…</option>
-        </select>
+        <div class="font-dd" id="font-dd">
+          <div class="font-dd-trigger" onclick="toggleFontDD()">
+            <span id="font-dd-label">Inter</span>
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
+          <div class="font-dd-list" id="font-dd-list" style="display:none;">
+            <div class="font-opt active" onclick="selectFont(this,'Inter')">Inter</div>
+            <div class="font-opt" onclick="selectFont(this,'Plus Jakarta Sans')">Plus Jakarta Sans</div>
+            <div class="font-opt" onclick="selectFont(this,'DM Sans')">DM Sans</div>
+            <div class="font-opt" onclick="selectFont(this,'Poppins')">Poppins</div>
+            <div class="font-opt" onclick="selectFont(this,'Lato')">Lato</div>
+            <div class="font-opt" onclick="selectFont(this,'Open Sans')">Open Sans</div>
+            <div class="font-opt" onclick="selectFont(this,'Montserrat')">Montserrat</div>
+            <div class="font-opt search-opt" onclick="selectFont(this,'search')">Search Google Fonts…</div>
+          </div>
+        </div>
         <div id="font-search-wrap" style="display: none; margin-top: 8px;">
           <input class="form-input" type="text" id="font-search" placeholder="e.g. Nunito, Raleway, Oswald…" style="font-size: 13px;">
         </div>
@@ -202,9 +236,33 @@
     if (clean !== val) input.value = clean;
   }
 
-  function handleFontChange(sel) {
-    document.getElementById('font-search-wrap').style.display = sel.value === 'search' ? 'block' : 'none';
+  function toggleFontDD() {
+    const dd = document.getElementById('font-dd');
+    const list = document.getElementById('font-dd-list');
+    const open = list.style.display !== 'none';
+    list.style.display = open ? 'none' : 'block';
+    dd.classList.toggle('open', !open);
   }
+
+  function selectFont(el, name) {
+    document.querySelectorAll('.font-opt').forEach(o => o.classList.remove('active'));
+    el.classList.add('active');
+    const isSearch = name === 'search';
+    document.getElementById('font-dd-label').textContent = isSearch ? 'Search Google Fonts…' : name;
+    document.getElementById('font-dd-list').style.display = 'none';
+    document.getElementById('font-dd').classList.remove('open');
+    const sw = document.getElementById('font-search-wrap');
+    sw.style.display = isSearch ? 'block' : 'none';
+    if (!isSearch) document.getElementById('font-search').value = '';
+  }
+
+  document.addEventListener('click', function(e) {
+    const dd = document.getElementById('font-dd');
+    if (dd && !dd.contains(e.target)) {
+      document.getElementById('font-dd-list').style.display = 'none';
+      dd.classList.remove('open');
+    }
+  });
 
   function previewLogo(input) {
     if (!input.files[0]) return;
