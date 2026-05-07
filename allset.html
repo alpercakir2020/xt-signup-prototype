@@ -39,12 +39,12 @@
 
     <div class="logo-wrap" style="margin-bottom: 20px;">
       <div class="brand-swap">
-        <div class="bs-initial">A</div>
-        <span class="bs-name">Acme Design Studio</span>
+        <div class="bs-initial" id="bs-initial">A</div>
+        <span class="bs-name" id="bs-name">Acme Design Studio</span>
       </div>
     </div>
 
-    <h1 class="heading" style="margin-bottom: 14px;">Acme Design Studio is ready.</h1>
+    <h1 class="heading" id="allset-heading" style="margin-bottom: 14px;">Acme Design Studio is ready.</h1>
 
     <div class="trial-pill">
       <span>●</span> Business Class unlocked — 14 days, all features
@@ -64,6 +64,11 @@
   </div>
 </div>
 <script>
+  const name = sessionStorage.getItem('workspaceName') || 'Acme Design Studio';
+  document.getElementById('bs-name').textContent = name;
+  document.getElementById('bs-initial').textContent = name.charAt(0).toUpperCase();
+  document.getElementById('allset-heading').textContent = name + ' is ready.';
+
   let n = 5;
   const tick = setInterval(() => {
     n--;

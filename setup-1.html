@@ -178,7 +178,7 @@
       You can update branding anytime from workspace settings.
     </p>
 
-    <button class="btn" id="enter-btn" onclick="window.location.href='allset.html'" style="margin-top: 28px;">Finish setup →</button>
+    <button class="btn" id="enter-btn" onclick="sessionStorage.setItem('workspaceName', document.getElementById('team-name').value); window.location.href='allset.html'" style="margin-top: 28px;">Finish setup →</button>
     <a href="allset.html" class="skip-link">Set up later</a>
 
   </div>
