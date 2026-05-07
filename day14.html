@@ -41,7 +41,7 @@
     .grace-note strong { color: var(--color-navy); }
   </style>
 </head>
-<body>
+<body class="annual">
 <div class="block-page">
   <div class="block-inner">
 
@@ -140,6 +140,7 @@
 
   function toggleBilling() {
     isAnnual = !isAnnual;
+    document.body.className = isAnnual ? 'annual' : 'monthly';
     const prices = isAnnual ? annual : monthly;
     ['solo','team','agency','business'].forEach(p => {
       document.getElementById('price-' + p).textContent = prices[p];
