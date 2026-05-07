@@ -10,33 +10,6 @@
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <style>
-    .font-dd { position: relative; }
-    .font-dd-trigger {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 14px; height: 44px;
-      background: #fff; border: 1px solid #d1d5db; border-radius: var(--border-radius);
-      font-size: 13px; color: var(--color-navy); cursor: pointer; user-select: none;
-      transition: border-color 0.15s;
-    }
-    .font-dd-trigger:hover { border-color: #9ca3af; }
-    .font-dd-trigger i { font-size: 10px; color: var(--color-text-faint); transition: transform 0.18s; }
-    .font-dd.open .font-dd-trigger { border-color: var(--color-navy); }
-    .font-dd.open .font-dd-trigger i { transform: rotate(180deg); }
-    .font-dd-list {
-      position: absolute; bottom: calc(100% + 4px); left: 0; right: 0;
-      background: #fff; border: 1px solid var(--color-border);
-      border-radius: var(--border-radius);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.1); z-index: 50; overflow: hidden;
-    }
-    .font-opt {
-      padding: 10px 14px; font-size: 13px; color: var(--color-navy);
-      cursor: pointer; transition: background 0.1s;
-    }
-    .font-opt:hover { background: #f3f4f6; }
-    .font-opt.active { color: var(--color-primary); font-weight: 600; background: rgba(238,114,113,0.06); }
-    .font-opt.search-opt { color: var(--color-blue); border-top: 1px solid var(--color-border); }
-  </style>
-  <style>
     .brand-row {
       display: flex;
       align-items: center;
@@ -119,6 +92,7 @@
         class="form-input"
         type="text"
         id="team-name"
+        value="Acme Design Studio"
         placeholder="e.g. Acme Design Studio"
         oninput="updateSlug(this.value)"
         autocomplete="off"
@@ -144,6 +118,8 @@
         <div class="slug-suffix">.xtensio.com</div>
       </div>
     </div>
+
+    <div id="slug-status" style="font-size: 12px; min-height: 18px; margin-top: 5px;"></div>
 
     <!-- Brand section -->
     <div class="section-label" style="margin-bottom: 12px; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--color-navy);">Your brand</div>
@@ -193,28 +169,6 @@
         </div>
         <p style="font-size: 11px; color: var(--color-text-faint); margin-top: 6px;">Tap any color to edit</p>
       </div>
-      <div style="margin-top: 14px;">
-        <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand font</div>
-        <div class="font-dd" id="font-dd">
-          <div class="font-dd-trigger" onclick="toggleFontDD()" tabindex="0" role="button" onkeydown="handleFontDDKey(event)">
-            <span id="font-dd-label">Inter</span>
-            <i class="fa-solid fa-chevron-down"></i>
-          </div>
-          <div class="font-dd-list" id="font-dd-list" style="display:none;">
-            <div class="font-opt active" tabindex="0" onclick="selectFont(this,'Inter')" onkeydown="handleFontOptKey(event,this,'Inter')">Inter</div>
-            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Plus Jakarta Sans')" onkeydown="handleFontOptKey(event,this,'Plus Jakarta Sans')">Plus Jakarta Sans</div>
-            <div class="font-opt" tabindex="0" onclick="selectFont(this,'DM Sans')" onkeydown="handleFontOptKey(event,this,'DM Sans')">DM Sans</div>
-            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Poppins')" onkeydown="handleFontOptKey(event,this,'Poppins')">Poppins</div>
-            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Lato')" onkeydown="handleFontOptKey(event,this,'Lato')">Lato</div>
-            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Open Sans')" onkeydown="handleFontOptKey(event,this,'Open Sans')">Open Sans</div>
-            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Montserrat')" onkeydown="handleFontOptKey(event,this,'Montserrat')">Montserrat</div>
-            <div class="font-opt search-opt" tabindex="0" onclick="selectFont(this,'search')" onkeydown="handleFontOptKey(event,this,'search')">Search Google Fonts…</div>
-          </div>
-        </div>
-        <div id="font-search-wrap" style="display: none; margin-top: 8px;">
-          <input class="form-input" type="text" id="font-search" placeholder="e.g. Nunito, Raleway, Oswald…" style="font-size: 13px;">
-        </div>
-      </div>
       <div style="margin-top: 14px; text-align: right;">
         <a href="#" class="link" style="font-size: 13px;" onclick="toggleBrandEdit(event)">Done</a>
       </div>
@@ -224,13 +178,21 @@
       You can update branding anytime from workspace settings.
     </p>
 
-    <button class="btn" id="enter-btn" onclick="window.location.href='allset.html'" style="margin-top: 28px;" disabled>Enter my workspace →</button>
+    <button class="btn" id="enter-btn" onclick="window.location.href='allset.html'" style="margin-top: 28px;">Enter my workspace →</button>
     <a href="allset.html" class="skip-link">Set up later</a>
 
   </div>
 </div>
 
 <script>
+  let slugTimer = null;
+  const takenSlugs = ['xtensio', 'apple', 'google', 'canva', 'notion', 'figma', 'slack', 'stripe'];
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const input = document.getElementById('team-name');
+    if (input.value) updateSlug(input.value);
+  });
+
   function updateSlug(val) {
     const slug = val.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'your-name';
     document.getElementById('slug-preview').textContent = slug + '.xtensio.com';
@@ -238,6 +200,29 @@
       document.getElementById('workspace-slug').value = slug;
     }
     document.getElementById('enter-btn').disabled = val.trim().length === 0;
+    scheduleSlugCheck(slug);
+  }
+
+  function scheduleSlugCheck(slug) {
+    clearTimeout(slugTimer);
+    const status = document.getElementById('slug-status');
+    if (!slug || slug === 'your-name') { status.innerHTML = ''; return; }
+    status.innerHTML = '<span style="color:var(--color-text-faint);">Checking availability…</span>';
+    slugTimer = setTimeout(() => {
+      if (takenSlugs.includes(slug)) {
+        const s = slug + '-2';
+        status.innerHTML = `<span style="color:var(--color-primary);">✗ Taken — try <a href="#" onclick="useSuggestion('${s}');return false;" style="color:var(--color-primary);font-weight:600;">${s}</a></span>`;
+      } else {
+        status.innerHTML = '<span style="color:var(--color-success);">✓ Available</span>';
+      }
+    }, 600);
+  }
+
+  function useSuggestion(slug) {
+    document.getElementById('workspace-slug').value = slug;
+    document.getElementById('slug-preview').textContent = slug + '.xtensio.com';
+    const status = document.getElementById('slug-status');
+    status.innerHTML = '<span style="color:var(--color-success);">✓ Available</span>';
   }
 
   function toggleSlug(e) {
@@ -254,64 +239,9 @@
     const val = input.value;
     const clean = val.toLowerCase().replace(/[^a-z0-9-]/g, '');
     if (clean !== val) input.value = clean;
+    scheduleSlugCheck(clean);
   }
 
-  function toggleFontDD() {
-    const dd = document.getElementById('font-dd');
-    const list = document.getElementById('font-dd-list');
-    const open = list.style.display !== 'none';
-    list.style.display = open ? 'none' : 'block';
-    dd.classList.toggle('open', !open);
-  }
-
-  function selectFont(el, name) {
-    document.querySelectorAll('.font-opt').forEach(o => o.classList.remove('active'));
-    el.classList.add('active');
-    const isSearch = name === 'search';
-    document.getElementById('font-dd-label').textContent = isSearch ? 'Search Google Fonts…' : name;
-    document.getElementById('font-dd-list').style.display = 'none';
-    document.getElementById('font-dd').classList.remove('open');
-    const sw = document.getElementById('font-search-wrap');
-    sw.style.display = isSearch ? 'block' : 'none';
-    if (!isSearch) document.getElementById('font-search').value = '';
-  }
-
-  function handleFontDDKey(e) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFontDD(); }
-    else if (e.key === 'Escape') {
-      document.getElementById('font-dd-list').style.display = 'none';
-      document.getElementById('font-dd').classList.remove('open');
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      const first = document.querySelector('#font-dd-list .font-opt');
-      if (first) first.focus();
-    }
-  }
-
-  function handleFontOptKey(e, el, name) {
-    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectFont(el, name); }
-    else if (e.key === 'Escape') {
-      document.getElementById('font-dd-list').style.display = 'none';
-      document.getElementById('font-dd').classList.remove('open');
-      document.querySelector('.font-dd-trigger').focus();
-    } else if (e.key === 'ArrowDown') {
-      e.preventDefault();
-      const next = el.nextElementSibling;
-      if (next) next.focus();
-    } else if (e.key === 'ArrowUp') {
-      e.preventDefault();
-      const prev = el.previousElementSibling;
-      if (prev) prev.focus(); else document.querySelector('.font-dd-trigger').focus();
-    }
-  }
-
-  document.addEventListener('click', function(e) {
-    const dd = document.getElementById('font-dd');
-    if (dd && !dd.contains(e.target)) {
-      document.getElementById('font-dd-list').style.display = 'none';
-      dd.classList.remove('open');
-    }
-  });
 
   function toggleBrandEdit(e) {
     e.preventDefault();
@@ -330,6 +260,11 @@
     reader.onload = e => {
       const icon = document.getElementById('brand-icon');
       icon.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">`;
+      const zone = document.getElementById('logo-upload-zone');
+      zone.classList.add('has-content');
+      zone.removeAttribute('onmouseenter');
+      zone.removeAttribute('onmouseleave');
+      zone.innerHTML = '<div style="font-size:13px;color:var(--color-success);font-weight:500;">Logo uploaded ✓ <span style="color:var(--color-text-faint);font-weight:400;font-size:12px;margin-left:4px;">Click to change</span></div>';
     };
     reader.readAsDataURL(input.files[0]);
   }

@@ -48,6 +48,7 @@
       background: rgba(0,189,156,0.06) !important;
     }
     .pick-rec { color: var(--color-success) !important; }
+    .pick-seats { font-size: 10px; color: var(--color-text-faint); margin-bottom: 4px; }
     .plan-pick.selected:not(.featured) {
       border-color: var(--color-primary) !important;
       background: rgba(238,114,113,0.08) !important;
@@ -98,18 +99,21 @@
     <div class="plan-picker" id="plan-selector">
       <div class="plan-pick" onclick="selectPlan(this,'solo')">
         <div class="pick-name">Solo</div>
+        <div class="pick-seats">1 seat</div>
         <div class="pick-was" id="was-solo">$24</div>
         <div class="pick-price" id="price-solo">$18</div>
         <div class="pick-per">/mo</div>
       </div>
       <div class="plan-pick" onclick="selectPlan(this,'team')">
         <div class="pick-name">Team</div>
+        <div class="pick-seats">3 seats</div>
         <div class="pick-was" id="was-team">$49</div>
         <div class="pick-price" id="price-team">$37</div>
         <div class="pick-per">/mo</div>
       </div>
       <div class="plan-pick featured selected" onclick="selectPlan(this,'agency')">
         <div class="pick-name">Agency</div>
+        <div class="pick-seats">5 seats</div>
         <div class="pick-was" id="was-agency">$69</div>
         <div class="pick-price" id="price-agency">$52</div>
         <div class="pick-per">/mo</div>
@@ -117,6 +121,7 @@
       </div>
       <div class="plan-pick" onclick="selectPlan(this,'business')">
         <div class="pick-name">Business</div>
+        <div class="pick-seats">10 seats</div>
         <div class="pick-was" id="was-business">$99</div>
         <div class="pick-price" id="price-business">$74</div>
         <div class="pick-per">/mo</div>
