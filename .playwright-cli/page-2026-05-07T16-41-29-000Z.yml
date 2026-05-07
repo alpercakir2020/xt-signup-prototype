@@ -1,0 +1,55 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "Set up your workspace" [level=1] [ref=e6]
+  - paragraph [ref=e7]: Your team works here. Clients access everything you share — all under your brand, at your own URL.
+  - generic [ref=e8]:
+    - generic [ref=e9]: Team or company name
+    - paragraph [ref=e10]: Appears on your workspace.
+    - textbox "Team or company name" [ref=e11]:
+      - /placeholder: e.g. Acme Design Studio
+  - generic [ref=e12]:
+    - generic [ref=e13]: Workspace URL
+    - paragraph [ref=e14]: Your work lives here.
+    - generic [ref=e15]:
+      - textbox "Workspace URL" [ref=e16]:
+        - /placeholder: acme-design
+      - generic [ref=e17]: .xtensio.com
+    - paragraph [ref=e18]
+  - separator [ref=e19]
+  - generic [ref=e20]: Your brand
+  - generic [ref=e21]:
+    - generic [ref=e22] [cursor=pointer]: Auto-fetched (business domain)
+    - generic [ref=e23] [cursor=pointer]: Enter manually (gmail)
+  - generic [ref=e24]:
+    - generic [ref=e25]:
+      - generic [ref=e26]: ✨
+      - generic [ref=e27]:
+        - text: We found your brand from
+        - strong [ref=e28]: acmestudio.com
+        - text: . Confirm or update below.
+    - generic [ref=e29]: Logo
+    - generic [ref=e30] [cursor=pointer]:
+      - generic [ref=e31]: A
+      - generic [ref=e32]:
+        - generic [ref=e33]: acme-logo.png
+        - generic [ref=e34]: Fetched from acmestudio.com
+      - generic [ref=e35]: Change
+    - generic [ref=e36]: Brand colors
+    - generic [ref=e37]:
+      - generic [ref=e40] [cursor=pointer]:
+        - generic [ref=e41]: Primary
+        - generic [ref=e42]: "#1a2b6d"
+      - generic [ref=e45] [cursor=pointer]:
+        - generic [ref=e46]: Secondary
+        - generic [ref=e47]: "#e8a020"
+      - generic [ref=e50] [cursor=pointer]:
+        - generic [ref=e51]: Dark
+        - generic [ref=e52]: "#0f172a"
+      - generic [ref=e55] [cursor=pointer]:
+        - generic [ref=e56]: Light
+        - generic [ref=e57]: "#f8fafc"
+    - paragraph [ref=e58]: Click any color to customize it
+  - link "Enter my workspace →" [ref=e59] [cursor=pointer]:
+    - /url: index.html
+  - link "Set up later" [ref=e60] [cursor=pointer]:
+    - /url: index.html

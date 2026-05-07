@@ -1,0 +1,32 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - paragraph [ref=e6]: Business Class Unlocked
+  - heading "You're getting everything. 14 days, no limits." [level=1] [ref=e7]:
+    - text: You're getting everything.
+    - text: 14 days, no limits.
+  - paragraph [ref=e8]:
+    - text: Because you're here to work with clients, we unlocked the full workspace.
+    - text: After 14 days, it downgrades to free unless you subscribe — you won't lose your work.
+  - list [ref=e9]:
+    - listitem [ref=e10]:
+      - generic [ref=e12]: 
+      - generic [ref=e13]:
+        - strong [ref=e14]: Build every deliverable your client expects
+        - text: Proposals, decks, reports, one-pagers — all in one workspace.
+    - listitem [ref=e15]:
+      - generic [ref=e17]: 
+      - generic [ref=e18]:
+        - strong [ref=e19]: Your brand, not ours
+        - text: Logo, colors, and your own custom domain. Clients see your brand everywhere.
+    - listitem [ref=e20]:
+      - generic [ref=e22]: 
+      - generic [ref=e23]:
+        - strong [ref=e24]: Share as a live, branded link
+        - text: Clients open the same URL and always see the latest version. No attachments.
+    - listitem [ref=e25]:
+      - generic [ref=e27]: 
+      - generic [ref=e28]:
+        - strong [ref=e29]: Engagement analytics
+        - text: Know when a client opened your link, how long they stayed, and which section they read.
+  - link "Start building →" [ref=e30] [cursor=pointer]:
+    - /url: template-pick.html

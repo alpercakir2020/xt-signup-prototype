@@ -1,0 +1,33 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "What are you building first?" [level=1] [ref=e6]
+  - paragraph [ref=e7]: Pick a starting point — you can build anything once you're in.
+  - generic [ref=e8]:
+    - generic [ref=e9] [cursor=pointer]:
+      - generic [ref=e11]: 
+      - generic [ref=e12]: Client Proposal
+    - generic [ref=e13] [cursor=pointer]:
+      - generic [ref=e15]: 
+      - generic [ref=e16]: One-Pager
+    - generic [ref=e17] [cursor=pointer]:
+      - generic [ref=e19]: 
+      - generic [ref=e20]: Pitch Deck
+    - generic [ref=e21] [cursor=pointer]:
+      - generic [ref=e23]: 
+      - generic [ref=e24]: Fact Sheet
+    - generic [ref=e25] [cursor=pointer]:
+      - generic [ref=e27]: 
+      - generic [ref=e28]: Case Study
+    - generic [ref=e29] [cursor=pointer]:
+      - generic [ref=e31]: 
+      - generic [ref=e32]: Capability Statement
+    - generic [ref=e33] [cursor=pointer]:
+      - generic [ref=e35]: 
+      - generic [ref=e36]: Status Report
+    - generic [ref=e37] [cursor=pointer]:
+      - generic [ref=e39]: 
+      - generic [ref=e40]: Consulting Scope
+  - paragraph [ref=e41]:
+    - text: or
+    - link "I'll decide later →" [ref=e42] [cursor=pointer]:
+      - /url: setup-1.html

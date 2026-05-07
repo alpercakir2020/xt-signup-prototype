@@ -725,7 +725,7 @@ body.monthly .price-monthly  { display: block !important; }
 .plan-features .no  { color: #d1d5db; flex-shrink: 0; }
 .plan-features li:has(.no) { color: var(--color-text-faint); }
 
-.plan-cta { margin-top: auto; }
+.plan-cta { margin-top: auto; min-height: 68px; display: flex; flex-direction: column; justify-content: flex-end; }
 
 .all-includes {
   margin-top: 36px;
@@ -813,10 +813,14 @@ body.monthly .price-monthly  { display: block !important; }
   transition: border-color 0.15s, background 0.15s;
 }
 
-.plan-pick:hover,
+.plan-pick:hover {
+  border-color: var(--color-blue);
+  background: rgba(76,123,160,0.04);
+}
+
 .plan-pick.selected {
-  border-color: var(--color-primary);
-  background: rgba(238,114,113,0.04);
+  border-color: var(--color-blue);
+  background: rgba(76,123,160,0.06);
 }
 
 .plan-pick.featured { border-color: var(--color-primary); background: rgba(238,114,113,0.04); }
