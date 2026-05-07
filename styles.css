@@ -725,7 +725,7 @@ body.monthly .price-monthly  { display: block !important; }
 .plan-features .no  { color: #d1d5db; flex-shrink: 0; }
 .plan-features li:has(.no) { color: var(--color-text-faint); }
 
-.plan-cta { margin-top: auto; min-height: 68px; display: flex; flex-direction: column; justify-content: flex-end; }
+.plan-cta { margin-top: auto; }
 
 .all-includes {
   margin-top: 36px;

@@ -1,0 +1,51 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "You built 7 folios in 14 days. Ready to pick your plan?" [level=1] [ref=e6]:
+    - text: You built 7 folios in 14 days.
+    - text: Ready to pick your plan?
+  - generic [ref=e7]:
+    - generic [ref=e8]:
+      - generic [ref=e9]: "7"
+      - generic [ref=e10]: Folios created
+    - generic [ref=e11]:
+      - generic [ref=e12]: "23"
+      - generic [ref=e13]: Link opens
+    - generic [ref=e14]:
+      - generic [ref=e15]: "3"
+      - generic [ref=e16]: Exports
+  - paragraph [ref=e17]: Keep everything you built — and keep sharing it.
+  - generic [ref=e19] [cursor=pointer]:
+    - generic [ref=e20]: Monthly
+    - generic [ref=e22]:
+      - text: Annual
+      - generic [ref=e23]: save 25%
+  - paragraph [ref=e24]: Billed annually
+  - generic [ref=e25]:
+    - generic [ref=e26] [cursor=pointer]:
+      - generic [ref=e27]: Solo
+      - generic [ref=e28]: $24
+      - generic [ref=e29]: $18
+      - generic [ref=e30]: /mo
+    - generic [ref=e31] [cursor=pointer]:
+      - generic [ref=e32]: Team
+      - generic [ref=e33]: $49
+      - generic [ref=e34]: $37
+      - generic [ref=e35]: /mo
+    - generic [ref=e36] [cursor=pointer]:
+      - generic [ref=e37]: Agency
+      - generic [ref=e38]: $69
+      - generic [ref=e39]: $52
+      - generic [ref=e40]: /mo
+      - generic [ref=e41]: Current Plan
+    - generic [ref=e42] [cursor=pointer]:
+      - generic [ref=e43]: Business
+      - generic [ref=e44]: $99
+      - generic [ref=e45]: $74
+      - generic [ref=e46]: /mo
+  - link "See full plan details →" [ref=e47] [cursor=pointer]:
+    - /url: pricing.html
+  - button "Subscribe to Agency — $52/mo" [ref=e48] [cursor=pointer]
+  - paragraph [ref=e49]:
+    - text: or
+    - link "continue with the free plan" [ref=e50] [cursor=pointer]:
+      - /url: day14-free.html

@@ -1,0 +1,31 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "Set up your workspace" [level=1] [ref=e6]
+  - paragraph [ref=e7]: Your team and clients will work from here.
+  - generic [ref=e8]:
+    - generic [ref=e9]: Team or company name
+    - textbox "Team or company name" [ref=e10]:
+      - /placeholder: e.g. Acme Design Studio
+  - paragraph [ref=e11]:
+    - text: Your workspace will be at your-name.xtensio.com
+    - link "Edit" [ref=e12] [cursor=pointer]:
+      - /url: "#"
+  - separator [ref=e13]
+  - generic [ref=e14]: Your brand
+  - generic [ref=e15]:
+    - generic [ref=e16]: A
+    - generic [ref=e17]:
+      - generic [ref=e18]: Acme Design Studio
+      - generic [ref=e19]: Fetched from acmestudio.com
+    - generic [ref=e20]:
+      - generic "Primary" [ref=e21]
+      - generic "Secondary" [ref=e22]
+      - generic "Dark" [ref=e23]
+      - generic "Light" [ref=e24]
+    - link "Change" [ref=e25] [cursor=pointer]:
+      - /url: "#"
+  - paragraph [ref=e26]: You can update branding anytime from workspace settings.
+  - link "Enter my workspace →" [ref=e27] [cursor=pointer]:
+    - /url: allset.html
+  - link "Set up later" [ref=e28] [cursor=pointer]:
+    - /url: allset.html

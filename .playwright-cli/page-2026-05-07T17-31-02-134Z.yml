@@ -1,0 +1,27 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - paragraph [ref=e6]: Free Plan
+  - heading "Your workspace is ready." [level=1] [ref=e7]
+  - paragraph [ref=e8]: Here's what you can do from day one.
+  - list [ref=e9]:
+    - listitem [ref=e10]:
+      - generic [ref=e12]: 
+      - generic [ref=e13]:
+        - strong [ref=e14]: Build real deliverables
+        - text: Start from a professional template — proposals, one-pagers, decks, and more.
+    - listitem [ref=e15]:
+      - generic [ref=e17]: 
+      - generic [ref=e18]:
+        - strong [ref=e19]: Share as a live link
+        - text: Anyone with the link sees the latest version. No email attachments, no PDFs.
+    - listitem [ref=e20]:
+      - generic [ref=e22]: 
+      - generic [ref=e23]:
+        - strong [ref=e24]: Export as PDF or image
+        - text: Download a polished PDF whenever you need to hand something off.
+  - link "Start creating →" [ref=e25] [cursor=pointer]:
+    - /url: index.html
+  - paragraph [ref=e26]:
+    - text: Need more folios, custom branding, or full team access?
+    - link "See all plans →" [ref=e27] [cursor=pointer]:
+      - /url: pricing.html
