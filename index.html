@@ -36,7 +36,12 @@
     .note-list .arrow { color: var(--color-success); font-weight: 700; flex-shrink: 0; }
     code { background: #f3f4f6; font-family: monospace; font-size: 12px; padding: 2px 6px; border-radius: 3px; color: var(--color-navy); }
     hr { border: none; border-top: 1px solid var(--color-border); margin: 32px 0; }
+    .icon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 10px; margin-top: 14px; }
+    .icon-row { display: flex; align-items: center; gap: 10px; padding: 10px 12px; background: #fff; border: 1px solid var(--color-border); border-radius: var(--border-radius); }
+    .icon-row i { font-size: 15px; color: var(--color-navy); width: 18px; text-align: center; flex-shrink: 0; }
+    .icon-row code { font-size: 11px; color: var(--color-text-secondary); background: none; padding: 0; }
   </style>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div class="index-wrap">
@@ -120,7 +125,12 @@
     <a href="allset.html" class="screen-card">
       <div class="screen-step icp">ICP — Step 5</div>
       <div class="screen-name">allset.html</div>
-      <div class="screen-desc">Arrival confirmation — you're all set</div>
+      <div class="screen-desc">Arrival confirmation — branded</div>
+    </a>
+    <a href="allset-generic.html" class="screen-card">
+      <div class="screen-step icp">ICP — Step 5 (Generic)</div>
+      <div class="screen-name">allset-generic.html</div>
+      <div class="screen-desc">Arrival — no workspace name (Google signup path)</div>
     </a>
     <a href="free-welcome.html" class="screen-card">
       <div class="screen-step">Non-ICP — Step 2</div>
@@ -156,6 +166,30 @@
       <li><span class="arrow">→</span> Progress dots: <code>.progress-wrap</code> + <code>.step-dot.done/.active/.upcoming</code></li>
       <li><span class="arrow">→</span> All design tokens in <code>styles.css</code> — CSS variable names match app conventions</li>
     </ul>
+  </div>
+
+  <hr>
+
+  <!-- Font Awesome icon inventory -->
+  <p class="flow-title" style="margin-bottom: 4px;">Font Awesome icons used in this prototype</p>
+  <p style="font-size: 12px; color: var(--color-text-faint); margin-bottom: 14px;">All icons are <code>fa-solid</code> style. CDN: <code>cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css</code></p>
+  <div class="icon-grid">
+    <div class="icon-row"><i class="fa-solid fa-briefcase"></i><code>fa-briefcase</code></div>
+    <div class="icon-row"><i class="fa-solid fa-bullseye"></i><code>fa-bullseye</code></div>
+    <div class="icon-row"><i class="fa-solid fa-chart-bar"></i><code>fa-chart-bar</code></div>
+    <div class="icon-row"><i class="fa-solid fa-chart-line"></i><code>fa-chart-line</code></div>
+    <div class="icon-row"><i class="fa-solid fa-file-arrow-down"></i><code>fa-file-arrow-down</code></div>
+    <div class="icon-row"><i class="fa-solid fa-file-lines"></i><code>fa-file-lines</code></div>
+    <div class="icon-row"><i class="fa-solid fa-file-signature"></i><code>fa-file-signature</code></div>
+    <div class="icon-row"><i class="fa-solid fa-graduation-cap"></i><code>fa-graduation-cap</code></div>
+    <div class="icon-row"><i class="fa-solid fa-link"></i><code>fa-link</code></div>
+    <div class="icon-row"><i class="fa-solid fa-list-check"></i><code>fa-list-check</code></div>
+    <div class="icon-row"><i class="fa-solid fa-magnifying-glass-chart"></i><code>fa-magnifying-glass-chart</code></div>
+    <div class="icon-row"><i class="fa-solid fa-medal"></i><code>fa-medal</code></div>
+    <div class="icon-row"><i class="fa-solid fa-palette"></i><code>fa-palette</code></div>
+    <div class="icon-row"><i class="fa-solid fa-pen-nib"></i><code>fa-pen-nib</code></div>
+    <div class="icon-row"><i class="fa-solid fa-seedling"></i><code>fa-seedling</code></div>
+    <div class="icon-row"><i class="fa-solid fa-wand-magic-sparkles"></i><code>fa-wand-magic-sparkles</code></div>
   </div>
 
 </div>
