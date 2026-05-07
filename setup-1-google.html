@@ -110,6 +110,14 @@
       <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
     </div>
 
+    <div class="progress-wrap">
+      <div class="step-dot done"></div>
+      <div class="step-dot done"></div>
+      <div class="step-dot done"></div>
+      <div class="step-dot active"></div>
+      <div class="step-dot upcoming"></div>
+    </div>
+
     <h1 class="heading" style="text-align: center; margin-bottom: 8px;">Set up your workspace</h1>
     <p class="subheading" style="text-align: center; font-size: 15px; margin-bottom: 16px;">Your team and clients will work from here.</p>
 
@@ -181,25 +189,26 @@
             <input type="color" style="opacity:0;width:0;height:0;position:absolute;" onchange="addSwatch(this)">+
           </label>
         </div>
+        <p style="font-size: 11px; color: var(--color-text-faint); margin-top: 6px;">Tap any color to edit</p>
       </div>
 
       <!-- Brand font -->
       <div>
         <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand font</div>
         <div class="font-dd" id="font-dd">
-          <div class="font-dd-trigger" onclick="toggleFontDD()">
+          <div class="font-dd-trigger" onclick="toggleFontDD()" tabindex="0" role="button" onkeydown="handleFontDDKey(event)">
             <span id="font-dd-label">Inter</span>
             <i class="fa-solid fa-chevron-down"></i>
           </div>
           <div class="font-dd-list" id="font-dd-list" style="display:none;">
-            <div class="font-opt active" onclick="selectFont(this,'Inter')">Inter</div>
-            <div class="font-opt" onclick="selectFont(this,'Plus Jakarta Sans')">Plus Jakarta Sans</div>
-            <div class="font-opt" onclick="selectFont(this,'DM Sans')">DM Sans</div>
-            <div class="font-opt" onclick="selectFont(this,'Poppins')">Poppins</div>
-            <div class="font-opt" onclick="selectFont(this,'Lato')">Lato</div>
-            <div class="font-opt" onclick="selectFont(this,'Open Sans')">Open Sans</div>
-            <div class="font-opt" onclick="selectFont(this,'Montserrat')">Montserrat</div>
-            <div class="font-opt search-opt" onclick="selectFont(this,'search')">Search Google Fonts…</div>
+            <div class="font-opt active" tabindex="0" onclick="selectFont(this,'Inter')" onkeydown="handleFontOptKey(event,this,'Inter')">Inter</div>
+            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Plus Jakarta Sans')" onkeydown="handleFontOptKey(event,this,'Plus Jakarta Sans')">Plus Jakarta Sans</div>
+            <div class="font-opt" tabindex="0" onclick="selectFont(this,'DM Sans')" onkeydown="handleFontOptKey(event,this,'DM Sans')">DM Sans</div>
+            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Poppins')" onkeydown="handleFontOptKey(event,this,'Poppins')">Poppins</div>
+            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Lato')" onkeydown="handleFontOptKey(event,this,'Lato')">Lato</div>
+            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Open Sans')" onkeydown="handleFontOptKey(event,this,'Open Sans')">Open Sans</div>
+            <div class="font-opt" tabindex="0" onclick="selectFont(this,'Montserrat')" onkeydown="handleFontOptKey(event,this,'Montserrat')">Montserrat</div>
+            <div class="font-opt search-opt" tabindex="0" onclick="selectFont(this,'search')" onkeydown="handleFontOptKey(event,this,'search')">Search Google Fonts…</div>
           </div>
         </div>
         <div id="font-search-wrap" style="display: none; margin-top: 8px;">
@@ -213,7 +222,7 @@
       You can update branding anytime from workspace settings.
     </p>
 
-    <a href="allset.html" class="btn" style="margin-top: 20px;">Enter my workspace →</a>
+    <button class="btn" id="enter-btn" onclick="window.location.href='allset.html'" style="margin-top: 20px;">Enter my workspace →</button>
     <a href="allset.html" class="skip-link">Set up later</a>
 
   </div>
@@ -226,6 +235,7 @@
     if (document.getElementById('workspace-slug')) {
       document.getElementById('workspace-slug').value = slug;
     }
+    document.getElementById('enter-btn').disabled = val.trim().length === 0;
   }
 
   function toggleSlug(e) {
@@ -262,6 +272,35 @@
     const sw = document.getElementById('font-search-wrap');
     sw.style.display = isSearch ? 'block' : 'none';
     if (!isSearch) document.getElementById('font-search').value = '';
+  }
+
+  function handleFontDDKey(e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleFontDD(); }
+    else if (e.key === 'Escape') {
+      document.getElementById('font-dd-list').style.display = 'none';
+      document.getElementById('font-dd').classList.remove('open');
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const first = document.querySelector('#font-dd-list .font-opt');
+      if (first) first.focus();
+    }
+  }
+
+  function handleFontOptKey(e, el, name) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); selectFont(el, name); }
+    else if (e.key === 'Escape') {
+      document.getElementById('font-dd-list').style.display = 'none';
+      document.getElementById('font-dd').classList.remove('open');
+      document.querySelector('.font-dd-trigger').focus();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      const next = el.nextElementSibling;
+      if (next) next.focus();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      const prev = el.previousElementSibling;
+      if (prev) prev.focus(); else document.querySelector('.font-dd-trigger').focus();
+    }
   }
 
   document.addEventListener('click', function(e) {
