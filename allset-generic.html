@@ -51,10 +51,23 @@
       Start building and share your first deliverable as a live link.
     </p>
 
-    <a href="index.html" class="btn">Go to my workspace →</a>
+    <a href="index.html" class="btn" id="workspace-btn">Go to my workspace →</a>
     <a href="#" class="skip-link" style="color: var(--color-blue);">Invite a teammate →</a>
+
+    <p id="redirect-note" style="font-size: 12px; color: var(--color-text-faint); margin-top: 20px;">
+      Redirecting to your workspace in <span id="countdown">5</span> seconds…
+    </p>
 
   </div>
 </div>
+<script>
+  let n = 5;
+  const tick = setInterval(() => {
+    n--;
+    document.getElementById('countdown').textContent = n;
+    if (n <= 0) { clearInterval(tick); window.location.href = 'index.html'; }
+  }, 1000);
+  document.getElementById('workspace-btn').addEventListener('click', () => clearInterval(tick));
+</script>
 </body>
 </html>
