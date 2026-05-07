@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xtensio — Welcome</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .what-list {
+      list-style: none;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+    .what-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f2f5;
+    }
+    .what-list li:last-child { border-bottom: none; }
+    .what-icon {
+      width: 32px;
+      min-width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      color: var(--color-success);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .what-text {
+      font-size: 15px;
+      color: var(--color-navy);
+      line-height: 1.45;
+    }
+    .what-text strong {
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+    }
+    .free-eyebrow {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-text-faint);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    .upgrade-nudge {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      text-align: center;
+      margin-top: 20px;
+      line-height: 1.5;
+    }
+    .upgrade-nudge a { color: var(--color-blue); text-decoration: none; font-weight: 500; }
+    .upgrade-nudge a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+<div class="page">
+  <div class="page-inner" style="max-width: 480px;">
+
+    <div class="logo-wrap" style="margin-bottom: 20px;">
+      <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo">
+    </div>
+
+    <p class="free-eyebrow">Free Plan</p>
+
+    <h1 class="heading" style="font-size: 36px; margin-bottom: 12px;">Your workspace is ready.</h1>
+    <p class="subheading" style="font-size: 15px; margin-bottom: 28px;">Here's what you can do from day one.</p>
+
+    <ul class="what-list">
+      <li>
+        <span class="what-icon"><i class="fa-solid fa-pen-nib"></i></span>
+        <span class="what-text">
+          <strong>Build real deliverables</strong>
+          Start from a professional template — proposals, one-pagers, decks, and more.
+        </span>
+      </li>
+      <li>
+        <span class="what-icon"><i class="fa-solid fa-link"></i></span>
+        <span class="what-text">
+          <strong>Share as a live link</strong>
+          Anyone with the link sees the latest version. No email attachments, no PDFs.
+        </span>
+      </li>
+      <li>
+        <span class="what-icon"><i class="fa-solid fa-arrow-down-to-line"></i></span>
+        <span class="what-text">
+          <strong>Export as PDF or image</strong>
+          Download a polished PDF whenever you need to hand something off.
+        </span>
+      </li>
+    </ul>
+
+    <a href="index.html" class="btn">Start creating →</a>
+
+    <p class="upgrade-nudge">
+      Need more folios, custom branding, or full team access?<br>
+      <a href="pricing.html">See all plans →</a>
+    </p>
+
+  </div>
+</div>
+</body>
+</html>
