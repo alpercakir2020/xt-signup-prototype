@@ -197,13 +197,12 @@
     clearTimeout(slugTimer);
     const status = document.getElementById('slug-status');
     if (!slug || slug === 'your-name') { status.innerHTML = ''; return; }
-    status.innerHTML = '<span style="color:var(--color-text-faint);">Checking availability…</span>';
     slugTimer = setTimeout(() => {
       if (takenSlugs.includes(slug)) {
         const s = slug + '-2';
         status.innerHTML = `<span style="color:var(--color-primary);">✗ Taken — try <a href="#" onclick="useSuggestion('${s}');return false;" style="color:var(--color-primary);font-weight:600;">${s}</a></span>`;
       } else {
-        status.innerHTML = '<span style="color:var(--color-success);">✓ Available</span>';
+        status.innerHTML = '';
       }
     }, 600);
   }

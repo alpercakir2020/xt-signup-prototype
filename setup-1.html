@@ -83,7 +83,7 @@
     </div>
 
     <h1 class="heading" style="text-align: center; margin-bottom: 8px;">Set up your workspace</h1>
-    <p class="subheading" style="text-align: center; font-size: 15px; margin-bottom: 28px;">Your team and clients will work from here.</p>
+    <p class="subheading" style="text-align: center; font-size: 15px; margin-bottom: 16px;">Your team and clients will work from here.</p>
 
     <!-- Name input -->
     <div class="form-group" style="margin-top: 0; margin-bottom: 4px;">
@@ -122,7 +122,7 @@
     <div id="slug-status" style="font-size: 12px; min-height: 18px; margin-top: 5px;"></div>
 
     <!-- Brand section -->
-    <div class="section-label" style="margin-bottom: 12px; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--color-navy);">Your brand</div>
+    <div class="section-label" style="margin-top: 28px; margin-bottom: 12px; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--color-navy);">Your brand</div>
 
     <div class="brand-row" id="brand-row">
       <div class="brand-logo-icon" id="brand-icon">A</div>
@@ -207,13 +207,12 @@
     clearTimeout(slugTimer);
     const status = document.getElementById('slug-status');
     if (!slug || slug === 'your-name') { status.innerHTML = ''; return; }
-    status.innerHTML = '<span style="color:var(--color-text-faint);">Checking availability…</span>';
     slugTimer = setTimeout(() => {
       if (takenSlugs.includes(slug)) {
         const s = slug + '-2';
         status.innerHTML = `<span style="color:var(--color-primary);">✗ Taken — try <a href="#" onclick="useSuggestion('${s}');return false;" style="color:var(--color-primary);font-weight:600;">${s}</a></span>`;
       } else {
-        status.innerHTML = '<span style="color:var(--color-success);">✓ Available</span>';
+        status.innerHTML = '';
       }
     }, 600);
   }
