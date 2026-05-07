@@ -164,13 +164,21 @@
       <!-- Brand colors -->
       <div style="margin-bottom: 14px;">
         <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand colors</div>
-        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
-          <span class="color-swatch selected-swatch" style="background: #1a2b6d;" onclick="pickColor(this, '#1a2b6d')"></span>
-          <span class="color-swatch" style="background: #e8a020;" onclick="pickColor(this, '#e8a020')"></span>
-          <span class="color-swatch" style="background: #ee7271;" onclick="pickColor(this, '#ee7271')"></span>
-          <span class="color-swatch" style="background: #00bd9c;" onclick="pickColor(this, '#00bd9c')"></span>
-          <label style="width: 28px; height: 28px; border-radius: 50%; border: 1.5px dashed #d1d5db; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; color: var(--color-text-faint);" title="Custom color">
-            <input type="color" style="opacity:0;width:0;height:0;position:absolute;" onchange="pickColor(null, this.value)">+
+        <div id="swatch-row" style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+          <label class="color-swatch" style="background: #1a2b6d;" title="Click to edit">
+            <input type="color" value="#1a2b6d" style="opacity:0;position:absolute;width:0;height:0;" oninput="updateSwatch(this)">
+          </label>
+          <label class="color-swatch" style="background: #e8a020;" title="Click to edit">
+            <input type="color" value="#e8a020" style="opacity:0;position:absolute;width:0;height:0;" oninput="updateSwatch(this)">
+          </label>
+          <label class="color-swatch" style="background: #ee7271;" title="Click to edit">
+            <input type="color" value="#ee7271" style="opacity:0;position:absolute;width:0;height:0;" oninput="updateSwatch(this)">
+          </label>
+          <label class="color-swatch" style="background: #00bd9c;" title="Click to edit">
+            <input type="color" value="#00bd9c" style="opacity:0;position:absolute;width:0;height:0;" oninput="updateSwatch(this)">
+          </label>
+          <label id="add-swatch-btn" style="width: 28px; height: 28px; border-radius: 50%; border: 1.5px dashed #d1d5db; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 14px; color: var(--color-text-faint);" title="Add color">
+            <input type="color" style="opacity:0;width:0;height:0;position:absolute;" onchange="addSwatch(this)">+
           </label>
         </div>
       </div>
@@ -272,17 +280,24 @@
       icon.style.background = '#fff';
       icon.style.border = '1px solid #e5e7eb';
       icon.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">`;
-      const nameEl = document.querySelector('.brand-info-name');
-      if (nameEl) { nameEl.style.color = ''; nameEl.style.fontWeight = ''; nameEl.textContent = 'Logo uploaded'; }
     };
     reader.readAsDataURL(input.files[0]);
   }
 
-  function pickColor(el, color) {
-    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected-swatch'));
-    if (el) el.classList.add('selected-swatch');
-    const icon = document.getElementById('brand-icon');
-    if (!icon.querySelector('img')) icon.style.background = color;
+  function updateSwatch(input) {
+    input.parentElement.style.background = input.value;
+  }
+
+  function addSwatch(input) {
+    const row = document.getElementById('swatch-row');
+    const btn = document.getElementById('add-swatch-btn');
+    const label = document.createElement('label');
+    label.className = 'color-swatch';
+    label.style.background = input.value;
+    label.title = 'Click to edit';
+    label.innerHTML = `<input type="color" value="${input.value}" style="opacity:0;position:absolute;width:0;height:0;" oninput="updateSwatch(this)">`;
+    row.insertBefore(label, btn);
+    input.value = '#000000';
   }
 </script>
 </body>
