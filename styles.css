@@ -82,7 +82,7 @@ body {
 }
 
 .logo {
-  height: 44px;
+  height: 52px;
   width: auto;
   display: inline-block;
 }
@@ -285,14 +285,15 @@ body {
 }
 
 .step-dot {
-  height: 5px;
-  border-radius: 3px;
-  transition: all 0.3s;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
 }
 
-.step-dot.done     { width: 28px; background: var(--color-success); }
-.step-dot.active   { width: 40px; background: var(--color-primary); }
-.step-dot.upcoming { width: 28px; background: #e2e6ea; }
+.step-dot.done     { background: #9ca3af; }
+.step-dot.active   { background: var(--color-navy); width: 20px; border-radius: 4px; }
+.step-dot.upcoming { background: transparent; border: 1.5px solid #d1d5db; }
 
 /* ── Survey cards ────────────────────────────────────────────────────────────── */
 .survey-options { margin-bottom: 28px; }
@@ -423,18 +424,15 @@ body {
 .feature-item:hover { border-color: var(--color-success); box-shadow: 0 2px 8px rgba(0,189,156,0.08); }
 
 .feature-item .check {
-  width: 30px;
-  height: 30px;
-  min-width: 30px;
-  background: rgba(0,189,156,0.12);
+  width: 20px;
+  min-width: 20px;
   color: var(--color-success);
-  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 13px;
+  font-size: 14px;
   flex-shrink: 0;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .feature-item-text {
@@ -669,13 +667,15 @@ body.annual  .toggle-pill::after { transform: translateX(24px); }
   align-items: center;
 }
 
-body.monthly .save-chip { opacity: 0; }
-body.monthly .billed-annual { display: none !important; }
-body.annual  .billed-monthly { display: none !important; }
-body.annual  .price-annual  { display: block !important; }
-body.annual  .price-monthly { display: none !important; }
-body.monthly .price-annual  { display: none !important; }
-body.monthly .price-monthly { display: block !important; }
+body.monthly .save-chip    { opacity: 0; }
+body.annual  .billed-annual  { display: block !important; }
+body.annual  .billed-monthly { display: none  !important; }
+body.monthly .billed-annual  { display: none  !important; }
+body.monthly .billed-monthly { display: block !important; }
+body.annual  .price-annual   { display: block !important; }
+body.annual  .price-monthly  { display: none  !important; }
+body.monthly .price-annual   { display: none  !important; }
+body.monthly .price-monthly  { display: block !important; }
 
 /* Pricing grid */
 .pricing-grid {
@@ -939,29 +939,29 @@ body.monthly .price-monthly { display: block !important; }
 /* Brand swap — replaces Xtensio logo once workspace is set up */
 .brand-swap {
   display: inline-flex;
+  flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
 }
 
 .bs-initial {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   background: #1a2b6d;
-  border-radius: 9px;
+  border-radius: 10px;
   color: #fff;
   font-weight: 800;
-  font-size: 17px;
+  font-size: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
 }
 
 .bs-name {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 14px;
+  font-weight: 600;
   color: var(--color-navy);
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 /* Icon circle above confirm heading */

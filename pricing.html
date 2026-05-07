@@ -20,7 +20,7 @@
       </div>
 
       <h1 class="heading mb-12">Choose your plan</h1>
-      <p class="subheading" style="margin-bottom: 32px;">Every plan includes unlimited folios, unlimited exports, live shareable links, and full branding control.</p>
+      <p class="subheading" style="margin-bottom: 32px;">Every plan includes unlimited deliverables, unlimited exports, live shareable links, and full branding control.</p>
 
       <!-- Billing toggle -->
       <div style="display: flex; justify-content: center; margin-bottom: 48px;">
@@ -146,10 +146,10 @@
     </div><!-- /pricing-grid -->
 
     <!-- All plans include -->
-    <div class="all-includes">
+    <div class="all-includes" style="border: none; background: none; padding-top: 28px;">
       <p class="section-label">All plans include</p>
       <div class="includes-pills">
-        <span class="includes-pill">Unlimited folios</span>
+        <span class="includes-pill">Unlimited deliverables</span>
         <span class="includes-pill">Unlimited exports</span>
         <span class="includes-pill">Live shareable links</span>
         <span class="includes-pill">Embed on website</span>
@@ -171,28 +171,9 @@
 
   function toggleBilling() {
     isAnnual = !isAnnual;
-
-    document.querySelectorAll('.price-annual').forEach(el => el.style.display = isAnnual ? '' : 'none');
-    document.querySelectorAll('.price-monthly').forEach(el => el.style.display = isAnnual ? 'none' : '');
-    document.querySelectorAll('.billed-annual').forEach(el => el.style.display = isAnnual ? '' : 'none');
-    document.querySelectorAll('.billed-monthly').forEach(el => el.style.display = isAnnual ? 'none' : '');
-
-    const lblMonthly = document.getElementById('lbl-monthly');
-    const lblAnnual  = document.getElementById('lbl-annual');
-    const saveChip   = document.getElementById('save-chip');
-    const pill       = document.getElementById('toggle-pill');
-
-    if (isAnnual) {
-      lblAnnual.classList.add('active');
-      lblMonthly.classList.remove('active');
-      saveChip.style.opacity = '1';
-      pill.style.background = 'var(--color-primary)';
-    } else {
-      lblMonthly.classList.add('active');
-      lblAnnual.classList.remove('active');
-      saveChip.style.opacity = '0';
-      pill.style.background = '#d1d5db';
-    }
+    document.body.className = isAnnual ? 'annual' : 'monthly';
+    document.getElementById('lbl-annual').classList.toggle('active', isAnnual);
+    document.getElementById('lbl-monthly').classList.toggle('active', !isAnnual);
   }
 </script>
 </body>

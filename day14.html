@@ -9,18 +9,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
   <style>
-    .grace-note {
-      background: #fff;
-      border: 1px solid var(--color-border);
-      border-radius: var(--border-radius);
-      padding: 14px 18px;
-      font-size: 13px;
-      color: var(--color-text-secondary);
-      text-align: center;
-      line-height: 1.5;
-      margin-top: 16px;
-    }
-    .grace-note strong { color: var(--color-navy); }
     .plan-detail-link {
       display: block;
       text-align: right;
@@ -34,8 +22,23 @@
       font-size: 11px;
       color: var(--color-text-faint);
       text-align: center;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
+    .pick-was {
+      font-size: 12px;
+      color: var(--color-text-faint);
+      text-decoration: line-through;
+      line-height: 1;
+      min-height: 16px;
+    }
+    .grace-note {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      text-align: center;
+      line-height: 1.5;
+      margin-top: 16px;
+    }
+    .grace-note strong { color: var(--color-navy); }
   </style>
 </head>
 <body>
@@ -74,28 +77,43 @@
       </div>
     </div>
 
+    <!-- Billing toggle -->
+    <div style="display: flex; justify-content: center; margin-bottom: 10px;">
+      <div class="billing-toggle" onclick="toggleBilling()" id="billing-toggle">
+        <span class="toggle-lbl" id="lbl-monthly">Monthly</span>
+        <div class="toggle-pill" id="toggle-pill"></div>
+        <span class="toggle-lbl active" id="lbl-annual">
+          Annual <span class="save-chip" id="save-chip">save 25%</span>
+        </span>
+      </div>
+    </div>
+
     <!-- Plan selector -->
-    <p class="billing-note">Annual billing — 3 months free</p>
+    <p class="billing-note" id="billing-note">Billed annually</p>
     <div class="plan-picker" id="plan-selector">
-      <div class="plan-pick" onclick="selectPlan(this,'solo','$18')">
+      <div class="plan-pick" onclick="selectPlan(this,'solo')">
         <div class="pick-name">Solo</div>
-        <div class="pick-price">$18</div>
+        <div class="pick-was" id="was-solo">$24</div>
+        <div class="pick-price" id="price-solo">$18</div>
         <div class="pick-per">/mo</div>
       </div>
-      <div class="plan-pick" onclick="selectPlan(this,'team','$37')">
+      <div class="plan-pick" onclick="selectPlan(this,'team')">
         <div class="pick-name">Team</div>
-        <div class="pick-price">$37</div>
+        <div class="pick-was" id="was-team">$49</div>
+        <div class="pick-price" id="price-team">$37</div>
         <div class="pick-per">/mo</div>
       </div>
-      <div class="plan-pick featured selected" onclick="selectPlan(this,'agency','$52')">
+      <div class="plan-pick featured selected" onclick="selectPlan(this,'agency')">
         <div class="pick-name">Agency</div>
-        <div class="pick-price">$52</div>
+        <div class="pick-was" id="was-agency">$69</div>
+        <div class="pick-price" id="price-agency">$52</div>
         <div class="pick-per">/mo</div>
         <div class="pick-rec">Popular</div>
       </div>
-      <div class="plan-pick" onclick="selectPlan(this,'business','$74')">
+      <div class="plan-pick" onclick="selectPlan(this,'business')">
         <div class="pick-name">Business</div>
-        <div class="pick-price">$74</div>
+        <div class="pick-was" id="was-business">$99</div>
+        <div class="pick-price" id="price-business">$74</div>
         <div class="pick-per">/mo</div>
       </div>
     </div>
@@ -108,19 +126,45 @@
       or <a href="day14-free.html" class="link">continue with the free plan</a>
     </p>
 
-    <div class="grace-note">
+    <p class="grace-note">
       <strong>You have 7 more days</strong> to decide. Your workspace is read-only until you choose — you won't lose any of your work.
-    </div>
+    </p>
 
   </div>
 </div>
 
 <script>
-  function selectPlan(el, name, price) {
+  const annual = { solo: '$18', team: '$37', agency: '$52', business: '$74' };
+  const monthly = { solo: '$24', team: '$49', agency: '$69', business: '$99' };
+  let isAnnual = true;
+  let selectedPlan = 'agency';
+
+  function toggleBilling() {
+    isAnnual = !isAnnual;
+    const prices = isAnnual ? annual : monthly;
+    ['solo','team','agency','business'].forEach(p => {
+      document.getElementById('price-' + p).textContent = prices[p];
+      const wasEl = document.getElementById('was-' + p);
+      wasEl.textContent = isAnnual ? monthly[p] : '';
+    });
+    document.getElementById('billing-note').textContent = isAnnual ? 'Billed annually' : 'Billed monthly';
+    document.getElementById('lbl-annual').classList.toggle('active', isAnnual);
+    document.getElementById('lbl-monthly').classList.toggle('active', !isAnnual);
+    document.getElementById('save-chip').style.opacity = isAnnual ? '1' : '0';
+    updateBtn();
+  }
+
+  function selectPlan(el, name) {
     document.querySelectorAll('.plan-pick').forEach(c => c.classList.remove('selected'));
     el.classList.add('selected');
-    const label = name.charAt(0).toUpperCase() + name.slice(1);
-    document.getElementById('subscribe-btn').textContent = 'Subscribe to ' + label + ' — ' + price + '/mo';
+    selectedPlan = name;
+    updateBtn();
+  }
+
+  function updateBtn() {
+    const prices = isAnnual ? annual : monthly;
+    const label = selectedPlan.charAt(0).toUpperCase() + selectedPlan.slice(1);
+    document.getElementById('subscribe-btn').textContent = 'Subscribe to ' + label + ' — ' + prices[selectedPlan] + '/mo';
   }
 </script>
 </body>
