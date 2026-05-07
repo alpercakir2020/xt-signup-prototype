@@ -1,0 +1,55 @@
+- generic [ref=e3]:
+  - img "Xtensio" [ref=e5]
+  - heading "Continuing with the free plan" [level=1] [ref=e6]
+  - paragraph [ref=e7]: Here's exactly what changes when you downgrade. You can upgrade anytime to restore full access.
+  - generic [ref=e8]:
+    - generic [ref=e9]:
+      - generic [ref=e10]: You keep
+      - list [ref=e11]:
+        - listitem [ref=e12]:
+          - generic [ref=e13]: ✓
+          - text: 3 folios (newest)
+        - listitem [ref=e14]:
+          - generic [ref=e15]: ✓
+          - text: 1 export (watermarked)
+        - listitem [ref=e16]:
+          - generic [ref=e17]: ✓
+          - text: 100 AI credits
+        - listitem [ref=e18]:
+          - generic [ref=e19]: ✓
+          - text: Basic templates
+        - listitem [ref=e20]:
+          - generic [ref=e21]: ✓
+          - text: Your workspace URL
+    - generic [ref=e22]:
+      - generic [ref=e23]: You lose
+      - list [ref=e24]:
+        - listitem [ref=e25]:
+          - generic [ref=e26]: ✕
+          - text: 4 folios archived
+        - listitem [ref=e27]:
+          - generic [ref=e28]: ✕
+          - text: Unlimited exports
+        - listitem [ref=e29]:
+          - generic [ref=e30]: ✕
+          - text: Custom branding
+        - listitem [ref=e31]:
+          - generic [ref=e32]: ✕
+          - text: Custom domain
+        - listitem [ref=e33]:
+          - generic [ref=e34]: ✕
+          - text: Analytics
+        - listitem [ref=e35]:
+          - generic [ref=e36]: ✕
+          - text: Collaboration
+        - listitem [ref=e37]:
+          - generic [ref=e38]: ✕
+          - text: Unbranded live links
+  - button "Continue with free plan" [ref=e39] [cursor=pointer]
+  - link "← Actually, I want to choose a plan" [ref=e40] [cursor=pointer]:
+    - /url: day14.html
+  - paragraph [ref=e41]:
+    - text: You can
+    - link "upgrade anytime" [ref=e42] [cursor=pointer]:
+      - /url: pricing.html
+    - text: to restore your archived folios and full access.

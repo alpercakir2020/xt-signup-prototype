@@ -8,6 +8,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Compact plan cards to fit above the fold */
+    .pricing-grid .plan-card {
+      padding: 20px 18px;
+    }
+    .pricing-grid .plan-price .amount {
+      font-size: 30px;
+    }
+    .pricing-grid .plan-billed {
+      margin-bottom: 10px;
+    }
+    .pricing-grid .plan-seats {
+      padding-bottom: 10px;
+      margin-bottom: 10px;
+    }
+    .pricing-grid .plan-features {
+      margin-bottom: 16px;
+    }
+    .pricing-grid .plan-features li {
+      padding: 3px 0;
+    }
+    /* Button alignment — both CTA areas identical height */
+    .pricing-grid .plan-cta {
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-grid .plan-cta .btn,
+    .pricing-grid .plan-cta .btn-ghost {
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .pricing-grid .plan-cta .cta-sub {
+      display: block;
+      font-size: 12px;
+      margin-top: 7px;
+      line-height: 1;
+      height: 14px;
+      text-align: center;
+    }
+  </style>
 </head>
 <body class="annual">
 <div class="pricing-page">
@@ -15,17 +58,15 @@
   <div class="pricing-wrap">
 
     <div class="pricing-head">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;">
+      <div style="margin-bottom: 12px;">
         <a href="javascript:history.back()" class="link" style="font-size:13px;">← Back</a>
-        <img src="https://xtensio.com/wp-content/themes/Divi-child/images/xtensio.svg" alt="Xtensio" class="logo" style="height:22px;">
-        <span style="width:48px;"></span>
       </div>
 
       <h1 class="heading mb-12">Choose your plan</h1>
-      <p class="subheading" style="margin-bottom: 32px;">Every plan includes unlimited deliverables, unlimited exports, live shareable links, and full branding control.</p>
+      <p class="subheading" style="margin-bottom: 20px;">Every plan includes unlimited deliverables, unlimited exports, live shareable links, and full branding control.</p>
 
       <!-- Billing toggle -->
-      <div style="display: flex; justify-content: center; margin-bottom: 48px;">
+      <div style="display: flex; justify-content: center; margin-bottom: 28px;">
         <div class="billing-toggle" onclick="toggleBilling()" id="billing-toggle">
           <span class="toggle-lbl" id="lbl-monthly">Monthly</span>
           <div class="toggle-pill" id="toggle-pill"></div>
@@ -63,7 +104,7 @@
         </ul>
         <div class="plan-cta">
           <a href="#" class="btn btn-ghost">Get started</a>
-          <span style="display:block;font-size:13px;margin-top:8px;visibility:hidden;">Talk to us →</span>
+          <span class="cta-sub" style="visibility:hidden;">Talk to us →</span>
         </div>
       </div>
 
@@ -90,7 +131,7 @@
         </ul>
         <div class="plan-cta">
           <a href="#" class="btn btn-ghost">Get started</a>
-          <span style="display:block;font-size:13px;margin-top:8px;visibility:hidden;">Talk to us →</span>
+          <span class="cta-sub" style="visibility:hidden;">Talk to us →</span>
         </div>
       </div>
 
@@ -118,7 +159,7 @@
         </ul>
         <div class="plan-cta">
           <a href="#" class="btn">Get started</a>
-          <span style="display:block;font-size:13px;margin-top:8px;visibility:hidden;">Talk to us →</span>
+          <span class="cta-sub" style="visibility:hidden;">Talk to us →</span>
         </div>
       </div>
 
@@ -145,14 +186,14 @@
         </ul>
         <div class="plan-cta">
           <a href="#" class="btn btn-ghost">Get started</a>
-          <a href="#" class="link" style="display:block;text-align:center;font-size:13px;margin-top:8px;line-height:1;">Talk to us →</a>
+          <a href="#" class="link cta-sub">Talk to us →</a>
         </div>
       </div>
 
     </div><!-- /pricing-grid -->
 
     <!-- All plans include -->
-    <div class="all-includes" style="border: none; background: none; padding-top: 28px;">
+    <div class="all-includes" style="border: none; background: none; padding-top: 24px;">
       <p class="section-label">All plans include</p>
       <div class="includes-pills">
         <span class="includes-pill">Unlimited deliverables</span>
@@ -164,7 +205,7 @@
         <span class="includes-pill">Password protection</span>
         <span class="includes-pill">Custom URLs</span>
       </div>
-      <p style="margin-top: 20px; font-size: 13px; color: var(--color-text-secondary);">
+      <p style="margin-top: 16px; font-size: 13px; color: var(--color-text-secondary);">
         Questions? <a href="#" class="link">Talk to us</a>
       </p>
     </div>

@@ -1,0 +1,15 @@
+- generic [ref=e3]:
+  - generic [ref=e5]:
+    - generic [ref=e6]: A
+    - generic [ref=e7]: Acme Design Studio
+  - generic [ref=e8]: ✓
+  - heading "You're all set." [level=1] [ref=e9]
+  - generic [ref=e10]:
+    - generic [ref=e11]: ●
+    - text: Business Class unlocked — 14 days, all features
+  - paragraph [ref=e12]:
+    - strong [ref=e13]: Acme Design Studio
+    - text: is ready.
+    - text: Invite your team, start building, and share your first deliverable — all from one place.
+  - link "Go to my workspace →" [ref=e14] [cursor=pointer]:
+    - /url: index.html

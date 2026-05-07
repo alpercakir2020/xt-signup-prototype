@@ -22,12 +22,12 @@
     .brand-logo-icon {
       width: 40px;
       height: 40px;
-      background: #1a2b6d;
+      background: #e5e7eb;
       border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: #9ca3af;
       font-weight: 800;
       font-size: 18px;
       flex-shrink: 0;
@@ -35,8 +35,6 @@
     .brand-info { flex: 1; min-width: 0; }
     .brand-info-name { font-size: 14px; font-weight: 600; color: var(--color-navy); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .brand-info-source { font-size: 12px; color: var(--color-text-faint); margin-top: 1px; }
-    .brand-color-dots { display: flex; gap: 5px; align-items: center; flex-shrink: 0; }
-    .color-dot { width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0; }
     .slug-preview {
       font-size: 13px;
       color: var(--color-text-secondary);
@@ -52,9 +50,20 @@
       border-top: 1px solid #f0f2f5;
       margin: 24px 0 20px;
     }
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      color: var(--color-text-faint);
+      background: #f3f4f6;
+      border-radius: 100px;
+      padding: 3px 10px 3px 8px;
+      margin-bottom: 24px;
+    }
     .color-swatch {
       width: 28px; height: 28px; border-radius: 50%; cursor: pointer;
-      border: 2px solid transparent; transition: border-color 0.15s, transform 0.1s; flex-shrink: 0;
+      border: 2px solid transparent; transition: border-color 0.15s; flex-shrink: 0;
     }
     .color-swatch:hover { border-color: #9ca3af; }
     .color-swatch.selected-swatch { border-color: var(--color-navy); }
@@ -69,24 +78,31 @@
     </div>
 
     <h1 class="heading" style="text-align: center; margin-bottom: 8px;">Set up your workspace</h1>
-    <p class="subheading" style="text-align: center; font-size: 15px; margin-bottom: 28px;">Your team and clients will work from here.</p>
+    <p class="subheading" style="text-align: center; font-size: 15px; margin-bottom: 16px;">Your team and clients will work from here.</p>
 
-    <!-- Name input -->
+    <div style="text-align: center;">
+      <span class="google-badge">
+        <svg width="13" height="13" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844a4.14 4.14 0 01-1.796 2.716v2.259h2.908c1.702-1.567 2.684-3.875 2.684-6.615z" fill="#4285F4"/><path d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.908-2.259c-.806.54-1.837.86-3.048.86-2.344 0-4.328-1.584-5.036-3.711H.957v2.332A8.997 8.997 0 009 18z" fill="#34A853"/><path d="M3.964 10.71A5.41 5.41 0 013.682 9c0-.593.102-1.17.282-1.71V4.958H.957A8.996 8.996 0 000 9c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/><path d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0A8.997 8.997 0 00.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z" fill="#EA4335"/></svg>
+        Signed in with Google as alper@gmail.com
+      </span>
+    </div>
+
+    <!-- Name input — pre-filled from Google account -->
     <div class="form-group" style="margin-top: 0; margin-bottom: 4px;">
-      <label class="form-label" for="team-name">Team or company name</label>
+      <label class="form-label" for="team-name">Workspace name</label>
       <input
         class="form-input"
         type="text"
         id="team-name"
-        placeholder="e.g. Acme Design Studio"
+        value="Alper Cakir"
         oninput="updateSlug(this.value)"
         autocomplete="off"
       >
     </div>
 
-    <!-- Auto-generated URL preview -->
+    <!-- Auto-generated URL preview — pre-populated from name -->
     <p class="slug-preview" id="slug-preview-text">
-      Your workspace will be at <span id="slug-preview">your-name.xtensio.com</span>
+      Your workspace will be at <span id="slug-preview">alper-cakir.xtensio.com</span>
       <a href="#" class="link" id="edit-slug-link" style="font-size: 13px; margin-left: 6px;" onclick="toggleSlug(event)">Edit</a>
     </p>
 
@@ -97,7 +113,7 @@
           class="slug-input"
           type="text"
           id="workspace-slug"
-          placeholder="acme-design"
+          value="alper-cakir"
           oninput="validateSlug(this)"
         >
         <div class="slug-suffix">.xtensio.com</div>
@@ -106,26 +122,20 @@
 
     <hr class="setup-divider">
 
-    <!-- Brand section -->
+    <!-- Brand section — empty state -->
     <div class="section-label" style="margin-bottom: 12px;">Your brand</div>
 
     <div class="brand-row" id="brand-row">
       <div class="brand-logo-icon" id="brand-icon">A</div>
       <div class="brand-info">
-        <div class="brand-info-name">Acme Design Studio</div>
-        <div class="brand-info-source">Fetched from acmestudio.com</div>
+        <div class="brand-info-name" style="color: var(--color-text-faint); font-weight: 400;">No brand kit yet</div>
+        <div class="brand-info-source">Add your logo and colors below</div>
       </div>
-      <div class="brand-color-dots" id="brand-color-dots">
-        <span class="color-dot" style="background: #1a2b6d;"></span>
-        <span class="color-dot" style="background: #e8a020;"></span>
-        <span class="color-dot" style="background: #0f172a;"></span>
-        <span class="color-dot" style="background: #f8fafc; border: 1px solid #e5e7eb;"></span>
-      </div>
-      <a href="#" class="link" id="change-brand-link" style="font-size: 13px; flex-shrink: 0; margin-left: 8px;" onclick="toggleBrandEdit(event)">Change</a>
+      <a href="#" class="link" id="change-brand-link" style="font-size: 13px; flex-shrink: 0; margin-left: 8px;" onclick="toggleBrandEdit(event)">Set up</a>
     </div>
 
-    <!-- Change expanded state -->
-    <div id="brand-edit-panel" style="display: none; margin-top: 12px; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px; background: #fafafa;">
+    <!-- Brand edit panel — starts open for Google signup to prompt action -->
+    <div id="brand-edit-panel" style="display: block; margin-top: 12px; border: 1px solid var(--color-border); border-radius: var(--border-radius); padding: 16px; background: #fafafa;">
       <div style="margin-bottom: 14px;">
         <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Logo</div>
         <div id="logo-upload-zone" onclick="document.getElementById('logo-file').click()" style="border: 1.5px dashed var(--color-border); border-radius: 8px; padding: 20px; text-align: center; cursor: pointer; transition: border-color 0.15s;" onmouseenter="this.style.borderColor='var(--color-primary)'" onmouseleave="this.style.borderColor='var(--color-border)'">
@@ -136,7 +146,7 @@
       <div>
         <div style="font-size: 12px; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 8px;">Brand color</div>
         <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-          <span class="color-swatch selected-swatch" style="background: #1a2b6d;" onclick="pickColor(this, '#1a2b6d')"></span>
+          <span class="color-swatch" style="background: #1a2b6d;" onclick="pickColor(this, '#1a2b6d')"></span>
           <span class="color-swatch" style="background: #e8a020;" onclick="pickColor(this, '#e8a020')"></span>
           <span class="color-swatch" style="background: #ee7271;" onclick="pickColor(this, '#ee7271')"></span>
           <span class="color-swatch" style="background: #00bd9c;" onclick="pickColor(this, '#00bd9c')"></span>
@@ -188,12 +198,10 @@
   function toggleBrandEdit(e) {
     e.preventDefault();
     const panel = document.getElementById('brand-edit-panel');
-    const dots = document.getElementById('brand-color-dots');
     const link = document.getElementById('change-brand-link');
     const open = panel.style.display !== 'none';
     panel.style.display = open ? 'none' : 'block';
-    dots.style.display = open ? 'flex' : 'none';
-    link.textContent = open ? 'Change' : 'Done';
+    link.textContent = open ? 'Set up' : 'Done';
   }
 
   function previewLogo(input) {
@@ -201,7 +209,11 @@
     const reader = new FileReader();
     reader.onload = e => {
       const icon = document.getElementById('brand-icon');
+      icon.style.background = '#fff';
+      icon.style.border = '1px solid #e5e7eb';
       icon.innerHTML = `<img src="${e.target.result}" style="width:100%;height:100%;object-fit:contain;border-radius:6px;">`;
+      const nameEl = document.querySelector('.brand-info-name');
+      if (nameEl) { nameEl.style.color = ''; nameEl.style.fontWeight = ''; nameEl.textContent = 'Logo uploaded'; }
     };
     reader.readAsDataURL(input.files[0]);
   }
@@ -209,7 +221,8 @@
   function pickColor(el, color) {
     document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected-swatch'));
     if (el) el.classList.add('selected-swatch');
-    document.getElementById('brand-icon').style.background = color;
+    const icon = document.getElementById('brand-icon');
+    if (!icon.querySelector('img')) icon.style.background = color;
   }
 </script>
 </body>
